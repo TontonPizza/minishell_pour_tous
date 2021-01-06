@@ -17,14 +17,21 @@ int main()
 	char *cm_1[] = {"/usr/bin/ping", "-c", "2", "google.com", NULL};
 	char *cm_2[] = {"/bin/grep", "packets", NULL};
 	char *cm_3[] = {"/bin/grep", "0", NULL};
-	char *cm_4[] = {"/usr/bin/wc", NULL};
-	char **cmd_pipe[] = {cm_1, cm_2, cm_3, cm_4, NULL};
+	char *cm_4[] = {"/bin/grop", "0", NULL};
+
+	char **cmd_pipe[] = {cm_1, cm_2, cm_3, NULL};
+
+	char **cmd_err[] = {cm_1, cm_4, cm_3, NULL};
 
 	errno = 0;
 	g_stdout_copy = dup(1);
 
 	dup2(g_stdout_copy, 2);
 
+//	execute_cmd_pipe(cmd_err, -1);
+
 	execute_cmd_pipe(cmd_pipe, -1);
+
+
 
 }
