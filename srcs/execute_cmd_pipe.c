@@ -12,12 +12,11 @@
 
 #include "../minishell.h"
 
-
-int 	exec_cmd(char **cmd)
+int 	exec_cmd(char ***cmd)
 {
-	// replace ENV, treat, redirection
-	execve(cmd[0], cmd, 0);
-	return (0);
+	// replace ENV, treat, redirection check if file exist
+	execve(cmd[0][0], cmd[0], 0);
+	exit(0);
 }
 
 int 	execute_cmd_pipe(char ***cmds, int source)
@@ -32,7 +31,7 @@ int 	execute_cmd_pipe(char ***cmds, int source)
 	if (cmds[1] == NULL) // if it's the last command of the list => output = stdout
 	{
 		dup2(g_stdout_copy, 1);
-		close(g_stdout_copy);
+//		close(g_stdout_copy);
 	}
 	else
 		dup2(pipe_fd[1], 1);
@@ -41,7 +40,7 @@ int 	execute_cmd_pipe(char ***cmds, int source)
 	if (pid < 0)
 		return (1);
 	if (pid == CHILD_PROCESS && close(pipe_fd[0]) == 0)
-		exec_cmd(cmds[0]);
+		exec_cmd(cmds);
 	wait(0);
 	close(pipe_fd[1]);
 	close(source);

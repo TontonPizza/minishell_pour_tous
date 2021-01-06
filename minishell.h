@@ -19,8 +19,11 @@
 #include <dirent.h>
 #include <string.h>
 #include <stdio.h>
+#include <errno.h>
 
 int		g_stdout_copy;
+int 	g_stderr_copy;
+int 	g_lat_exit_value;
 
 int 	execute_cmd_pipe(char ***cmds, int source);
 
