@@ -3,6 +3,9 @@ NAME = minishell
 
 SRCS	=	minishell.c \
 			./srcs/execute_cmd_pipe.c \
+			./srcs/line_to_words.c \
+			./srcs/words_to_token.c \
+			./srcs/t_token_list_manipulation.c \
         	./libft/libft.a \
 
 

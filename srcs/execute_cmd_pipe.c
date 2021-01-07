@@ -12,15 +12,31 @@
 
 #include "../minishell.h"
 
+int mainc()
+{
+	char *cm_1[] = {"/usr/bin/ping", "-c", "2", "google.com", NULL};
+	char *cm_2[] = {"/bin/grep", "packets", NULL};
+	char *cm_3[] = {"/bin/grep", "0", NULL};
+	char *cm_4[] = {"/bin/grep", "0", NULL};
+
+	char **cmd_pipe[] = {cm_1, cm_2, cm_3, NULL};
+
+	char **cmd_err[] = {cm_1, cm_4, cm_3, NULL};
+
+	errno = 0;
+	g_stdout_copy = dup(1);
+
+	dup2(g_stdout_copy, 2);
+
+	execute_cmd_pipe(cmd_pipe, -1);
+	return 0;
+}
+
 int 	is_valid(char ***cmds) // exemple
 {
 	// replace ENV check if file exist qnd is executable
-	if (ft_strncmp(cmds[0][0], "/bin/grep", ft_strlen(cmds[0][0])) == 0)
-	{
-		ft_putendl_fd("command not found", g_stdout_copy);
-		return (0);
-	}
-	return (1);
+
+	return (0);
 
 }
 
@@ -56,10 +72,13 @@ int 	execute_cmd_pipe(char ***cmds, int source)
 	else
 		dup2(pipe_fd[1], 1);
 	dup2(source, 0);
-	if (is_valid(cmds))
+	if (is_valid(cmds) == 0)
 		exec_fork(cmds, pipe_fd[0]);
 	else
-		cmds[1] = 0;
+	{
+		close(source);
+		return (-1);
+	}
 	wait(0);
 	close(pipe_fd[1]);
 	close(source);
