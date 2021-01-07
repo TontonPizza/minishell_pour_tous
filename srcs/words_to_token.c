@@ -28,7 +28,6 @@ int 		token_type(char *word)
 	if (ft_strncmp(word, ">>", i) == 0)
 		return (TYPE_APPEND);
 	return (TYPE_WORD);
-
 }
 
 t_token		*word_to_token(char *word)
@@ -40,7 +39,23 @@ t_token		*word_to_token(char *word)
 		return (0);
 	token->token = ft_strdup(word);
 	token->type = token_type(word);
-	return token;
+	token->next = 0;
+	return (token);
+}
+
+t_token 	*words_to_token_list_and_free_words(char **words)
+{
+	t_token 	*first_token;
+	first_token = (0);
+	int 		i;
+
+	while (words[i])
+	{
+		token_add_back(&first_token, word_to_token(words[i]));
+		i++;
+	}
+	free_split(words);
+	return (first_token);
 }
 
 void 	print_content(void *content)
@@ -60,11 +75,7 @@ int main()
 	first_token = 0;
 	i = 0;
 	char **words = get_words("salut les copains ; ;");
-	while (words[i])
-	{
-		token_add_back(&first_token, word_to_token(words[i]));
-		i++;
-	}
+	first_token = words_to_token_list_and_free_words(words);
 
 	cursor = first_token;
 	while (cursor)
@@ -72,7 +83,6 @@ int main()
 		print_content(cursor);
 		cursor = cursor->next;
 	}
-
 }
 
 
