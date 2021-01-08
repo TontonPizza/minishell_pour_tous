@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   env_manipulation_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vo-nguye <vo-nguye@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 21:18:22 by vo-nguye          #+#    #+#             */
-/*   Updated: 2019/10/09 21:18:22 by vo-nguye         ###   ########.fr       */
+/*   Created: 2021/01/08 08:43:04 by vo-nguye          #+#    #+#             */
+/*   Updated: 2021/01/08 08:43:04 by vo-nguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../minishell.h"
 
-int 			vo_strcmp(char *name, char *value)
+int 	env_var_count()
 {
-	if (ft_strlen(name) != ft_strlen(value))
-		return (-1);
-	return (ft_strncmp(name, value, ft_strlen(name)));
-}
-
-int				ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	i;
-	int		result;
+	int			i;
+	t_env_var	*current;
 
 	i = 0;
-	result = 0;
-	while (i < n)
+	current = env_list;
+	while (current)
 	{
-		result = (unsigned char)s1[i] - (unsigned char)s2[i];
-		if (result != 0 || !s1[i] || !s2[i])
-			return (result);
+		current = current->next;
 		i++;
 	}
-	return (result);
+	return (i);
 }

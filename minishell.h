@@ -61,12 +61,15 @@ typedef struct 	s_env_var
 
 int			g_stdout_copy;
 int 		g_stderr_copy;
-int 		g_lat_exit_value;
+int 		g_last_exit_value;
 
 t_env_var 	*env_list;
+char 		*requested_env_var;
+char 		**all_env_as_array;
 
 int 		execute_cmd_pipe(char ***cmds, int source);
 char		**get_words(char *line);
+int 		env_var_count();
 
 
 // Token list

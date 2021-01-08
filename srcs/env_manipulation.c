@@ -12,11 +12,31 @@
 
 #include "../minishell.h"
 
-char		**get_env_as_words()
+char		**get_env_as_array()
 {
-	char	**env;
+	int 		i;
+	t_env_var 	*current;
+	char 		*word;
 
-	return (env);
+	i = 0;
+	current = env_list;
+	free_split(all_env_as_array);
+	all_env_as_array = malloc(sizeof (char *) * env_var_count() + 1);
+	if (all_env_as_array == 0)
+		return (0);
+	while(current)
+	{
+		word = ft_strdup("");
+		word = ft_strjoin_and_free(word, current->name);
+		word = ft_strjoin_and_free(word, "=");
+		word = ft_strjoin_and_free(word, current->value);
+		all_env_as_array[i] = ft_strdup(word);
+		free(word);
+		current = current->next;
+		i++;
+	}
+	all_env_as_array[i] = 0;
+	return (all_env_as_array);
 }
 
 void 		init_env_list(void)
@@ -25,12 +45,15 @@ void 		init_env_list(void)
 	env_list->name = ft_strdup("author");
 	env_list->value = ft_strdup("vo-nguye");
 	env_list->next = 0;
+	requested_env_var = ft_strdup("");
+	all_env_as_array = ft_split("yolo yolo", ' ');
 }
 
 char 		*get_value(char *name)
 {
 	t_env_var	*current;
 
+	free(requested_env_var);
 	current = env_list;
 	while (current->next && ft_strncmp(current->name, name, ft_strlen(name)) != 0)
 	{
@@ -38,9 +61,11 @@ char 		*get_value(char *name)
 	}
 	if (ft_strncmp(current->name, name, ft_strlen(name)) == 0)
 	{
-		return (ft_strdup(current->value));
+		requested_env_var = ft_strdup(current->value);
+		return (requested_env_var);
 	}
-	return (ft_strdup(""));
+	requested_env_var = ft_strdup("");
+	return (requested_env_var);
 }
 
 void 		unset_env(char *name)
@@ -48,11 +73,11 @@ void 		unset_env(char *name)
 		t_env_var	*current;
 
 		current = env_list;
-		while (current->next && ft_strncmp(current->name, name, ft_strlen(name)) != 0)
+		while (current && current->next && vo_strcmp(current->name, name) != 0)
 		{
 			current = current->next;
 		}
-		if (ft_strncmp(current->name, name, ft_strlen(name)) == 0)
+		if (vo_strcmp(current->name, name) == 0)
 		{
 			free(current->value);
 			current->value = ft_strdup("");
@@ -65,21 +90,21 @@ void 		export_var(char *name, char *value)
 		t_env_var *item;
 
 		current = env_list;
-		while (current->next && ft_strncmp(current->name, name, ft_strlen(name)) != 0)
+		while (current && current->next && vo_strcmp(name, current->name) != 0)
 		{
 			current = current->next;
 		}
-		if (current->next == 0 && ft_strncmp(current->name, name, ft_strlen(name)) != 0)
+		if (vo_strcmp(name, current->name) != 0)
 		{
 			item = malloc(sizeof(t_env_var));
-			if (current == 0)
+			if (item == 0)
 				return ;
 			item->name = ft_strdup(name);
 			item->value = ft_strdup(value);
 			item->next = 0;
 			current->next = item;
 		}
-		else
+		else if (vo_strcmp(name, current->name) == 0)
 		{
 			free(current->value);
 			current->value = ft_strdup(value);
@@ -109,23 +134,16 @@ void 	print_var()
 int		main()
 {
 	init_env_list();
+	print_split(get_env_as_array());
 
-	print_var();
-
-	export_var("salut", "copain");
-	printf("\n\n---\n\n");
-
-	print_var();
-	printf("\n\n---\n\n");
-	unset_env("salut");
-	print_var();
-	printf("\n\n---\n\n");
-	unset_env("salut");
-	print_var();
-	printf("\n\n---\n\n");
-	printf("-%s\n", get_value("author"));
-	printf("-%s\n", get_value("salut"));
-	printf("-%s\n", get_value("NTM"));
+	export_var("1", "val");
+	print_split(get_env_as_array());
+	print_split(get_env_as_array());
+	export_var("2", "val");
+	print_split(get_env_as_array());
+	print_split(get_env_as_array());
+	export_var("3", "val");
+	print_split(get_env_as_array());
 
 	return (0);
 }

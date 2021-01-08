@@ -40,7 +40,7 @@ void	print_split(char **words)
 	int i;
 
 	i = 0;
-	while (words[i])
+	while (words && words[i])
 	{
 		ft_putstr_fd(words[i], 1);
 		ft_putchar_fd('\n', 1);
