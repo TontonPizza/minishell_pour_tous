@@ -69,11 +69,13 @@ char 		**all_env_as_array;
 
 int 		execute_cmd_pipe(char ***cmds, int source);
 char		**get_words(char *line);
-int 		env_var_count();
+int 		env_var_count(void);
 
 
 // Token list
 void		token_add_back(t_token **list, t_token *item);
 
+// ENV MANIPULATION
+void 		destroy_env(void);
 
 #endif //MINISHELL_MINISHELL_H

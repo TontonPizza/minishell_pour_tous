@@ -145,6 +145,8 @@ int		main()
 	export_var("3", "val");
 	print_split(get_env_as_array());
 
+	destroy_env();
+
 	return (0);
 }
 

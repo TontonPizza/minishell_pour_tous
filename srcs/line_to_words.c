@@ -34,7 +34,7 @@ char		*get_next_word(char *text, int *cursor, int i)
 	char	*new_text;
 	char	sep;
 
-	while (text[i] == ' ' || text[i] == '\t' && text[i])
+	while ((text[i] == ' ' || text[i] == '\t') && text[i])
 		i++;
 	new_text = check_for_separator(new_text, text + i, &i);
 	if (new_text && ft_strlen(new_text) > 0)
