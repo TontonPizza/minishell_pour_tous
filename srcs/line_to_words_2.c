@@ -35,13 +35,10 @@ int main()
 
 	char *line;
 	get_next_line(0, &line);
-	char **words = get_words(line);
-	char **clean_words = clean_words_up_to_semicolon(words);
 
+	char *words = clean_word(line);
+	printf("%s\n", words);
 
-	print_split(clean_words);
-	free_split(clean_words);
-	destroy_env();
 	free(line);
 	return 0;
 }
