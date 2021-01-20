@@ -85,6 +85,6 @@ void 		init_env_list();
 // Parsing cleaning
 char		*clean_word(char *word);
 char 		**clean_words_up_to_semicolon(char **words);
-
+void		words_to_token_list_and_free_words(char **words, t_token **f_token);
 
 #endif //MINISHELL_MINISHELL_H

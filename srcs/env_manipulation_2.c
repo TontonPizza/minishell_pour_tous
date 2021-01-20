@@ -27,14 +27,14 @@ int 	env_var_count(void)
 	return (i);
 }
 
-int		destroy_env_list(t_env_var *item)
+int		destroy_env_list(t_env_var **item)
 {
-	if (item == NULL)
+	if (*item == NULL)
 		return (0);
-	destroy_env_list(item->next);
-	free(item->value);
-	free(item->name);
-	free(item);
+	destroy_env_list(&((*item)->next));
+	free((*item)->value);
+	free((*item)->name);
+	free(*item);
 	return (0);
 }
 
@@ -50,5 +50,5 @@ void 	destroy_env(void)
 		free(requested_env_var);
 		requested_env_var = NULL;
 	}
-	destroy_env_list(env_list);
+	destroy_env_list(&env_list);
 }

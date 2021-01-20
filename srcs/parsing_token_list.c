@@ -28,9 +28,9 @@ char 		*expand_env_variable(char *current, char **result)
 	}
 	if (*current == '{')
 		current++;
-	while (ft_isalpha(*current))
+	while (*current && ft_isalpha(*current))
 		tmp = join_char_and_free(tmp, *current++);
-	while (ft_isdigit(*current))
+	while (*current && ft_isdigit(*current))
 		tmp = join_char_and_free(tmp, *current++);
 	if (*current == '}')
 		current++;

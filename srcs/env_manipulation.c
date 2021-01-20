@@ -52,7 +52,6 @@ void 		init_env_list(void)
 char 		*get_value_and_free_or_not(char *name, int free_name)
 {
 	t_env_var	*current;
-
 	free(requested_env_var);
 	current = env_list;
 	while (current->next && ft_strncmp(current->name, name, ft_strlen(name)) != 0)
