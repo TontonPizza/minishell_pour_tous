@@ -19,7 +19,7 @@ char 		*check_for_separator(char *new_text, char *text, int *cursor)
 	buffer[0] = 0;
 	buffer[1] = 0;
 	buffer[2] = 0;
-	if (text[0] == '|' || text[0] == ';' || text[0] == '>')
+	if (text[0] == '|' || text[0] == ';' || text[0] == '>' || text[0] == '<')
 	{
 		buffer[0] = text[0];
 		if (text[1] == '>' && text[0] == '>')
@@ -63,9 +63,8 @@ char		**get_words(char *line)
 	int		cursor;
 	int		word_count;
 
-	result = ft_calloc(sizeof(char *), ft_strlen(line));
-	if (result == NULL)
-		return (NULL);
+	result = x_malloc(sizeof(char *) * (ft_strlen(line) + 1));
+	result[0] = 0;
 	cursor = 0;
 	word_count = 0;
 	while (cursor < ft_strlen(line))

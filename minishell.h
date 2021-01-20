@@ -76,6 +76,8 @@ int 		env_var_count(void);
 // Token list
 void		token_add_back(t_token **list, t_token *item);
 int 		token_type(char *word);
+int			list_size(t_token *list);
+void 		print_content(void *content);
 
 // ENV MANIPULATION
 void 		destroy_env(void);

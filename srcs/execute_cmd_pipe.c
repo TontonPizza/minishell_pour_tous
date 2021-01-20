@@ -12,12 +12,12 @@
 
 #include "../minishell.h"
 
-int mainc()
+int main()
 {
-	char *cm_1[] = {"/usr/bin/ping", "-c", "2", "google.com", NULL};
-	char *cm_2[] = {"/bin/grep", "packets", NULL};
-	char *cm_3[] = {"/bin/grep", "0", NULL};
-	char *cm_4[] = {"/bin/grep", "0", NULL};
+	char *cm_1[] = {"/bin/ping", "-c", "2", "google.com", NULL};
+	char *cm_2[] = {"/bin/grep", "=", NULL};
+	char *cm_3[] = {"/bin/grep", "ms", NULL};
+	char *cm_4[] = {"/bin/grep", ".", NULL};
 
 	char **cmd_pipe[] = {cm_1, cm_2, cm_3, NULL};
 
@@ -34,7 +34,6 @@ int mainc()
 
 int 	is_valid(char ***cmds) // exemple
 {
-	// replace ENV check if file exist qnd is executable
 
 	return (0);
 }
@@ -83,3 +82,11 @@ int 	execute_cmd_pipe(char ***cmds, int source)
 	close(source);
 	return (execute_cmd_pipe(cmds + 1, pipe_fd[0]));
 }
+
+//char 	**treat_redirection_operators_and_get_args(char **words) // supposons que les tokens son valides (pas de > <)
+//{
+//	char **result;
+//
+//	result = x_malloc(sizeof(char *) * (split_size(words) + 1));
+//
+//}
