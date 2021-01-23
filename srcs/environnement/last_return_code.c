@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   last_return_code.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vo-nguye <vo-nguye@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/06 08:16:55 by vo-nguye          #+#    #+#             */
-/*   Updated: 2021/01/06 08:16:55 by vo-nguye         ###   ########.fr       */
+/*   Created: 2021/01/23 06:18:19 by vo-nguye          #+#    #+#             */
+/*   Updated: 2021/01/23 06:18:19 by vo-nguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
-//void test_env();
-//void test_parsing();
-
-int main()
+int 	last_return_code(int op, int value)
 {
-	test_env();
+	static int	last_return_code;
+
+	if (op == set)
+		last_return_code = value;
+
+	return last_return_code;
 }

@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   test_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vo-nguye <vo-nguye@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/06 08:16:55 by vo-nguye          #+#    #+#             */
-/*   Updated: 2021/01/06 08:16:55 by vo-nguye         ###   ########.fr       */
+/*   Created: 2021/01/23 18:12:29 by vo-nguye          #+#    #+#             */
+/*   Updated: 2021/01/23 18:12:29 by vo-nguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
-//void test_env();
-//void test_parsing();
-
-int main()
+void test_parsing()
 {
-	test_env();
+	char *line;
+
+	get_next_line(0, &line);
+	char **words = get_words_and_free(line);
+	print_split(words);
+
 }

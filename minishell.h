@@ -9,31 +9,8 @@
 #		define CHILD_PROCESS 0
 #	endif
 
-#ifndef TYPE_WORD
-#   define TYPE_WORD 0
-#endif
-
-#ifndef TYPE_PIPE
-#   define TYPE_PIPE 1
-#endif
-
-#ifndef TYPE_OUT
-#   define TYPE_OUT 2
-#endif
-
-#ifndef TYPE_APPEND
-#   define TYPE_APPEND 3
-#endif
-
-#ifndef TYPE_IN
-#   define TYPE_IN 4
-#endif
-
-#ifndef TYPE_END
-#   define TYPE_END 5
-#endif
-
 #include "libft/libft.h"
+#include "srcs/tests/tests.h"
 
 #include <stdlib.h>
 #include <unistd.h>
@@ -44,6 +21,22 @@
 #include <string.h>
 #include <stdio.h>
 #include <errno.h>
+
+enum token_type_code
+{
+	TYPE_WORD,
+	TYPE_PIPE,
+	TYPE_OUT,
+	TYPE_APPEND,
+	TYPE_IN,
+	TYPE_END
+};
+
+enum operation_type
+{
+	get,
+	set
+};
 
 typedef struct		s_token
 {
@@ -74,8 +67,20 @@ char		**get_env_as_array(void);
 char 		*get_value_and_free_or_not(char *name, int free_or_not);
 int 		env_var_count(void);
 t_env_data	*get_meta_data(int first_call);
+int 		last_return_code(int op, int value);
 
 void		export_var(char *name, char *value);
 void		unset_env(char *name);
+
+// PARSING
+
+char 		**get_words_and_free(char *line);
+char 		**get_words(char *line);
+char		*clean_word(char *word);
+int 		token_type(char *word);
+
+
+/***********************************/
+/***********************************/
 
 #endif //MINISHELL_MINISHELL_H

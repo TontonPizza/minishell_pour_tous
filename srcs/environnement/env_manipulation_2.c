@@ -47,6 +47,7 @@ t_env_data	*get_meta_data(int first_call)
 
 void	init_env_list(void)
 {
+	last_return_code(set, 0);
 	get_meta_data(1);
 }
 
