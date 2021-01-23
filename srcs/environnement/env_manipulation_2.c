@@ -10,24 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-int 	env_var_count(void)
-{
-	int			i;
-	t_env_var	*current;
-
-	i = 0;
-	current = env_list;
-	while (current)
-	{
-		current = current->next;
-		i++;
-	}
-	return (i);
-}
-
-int		destroy_env_list(t_env_var **item)
+int	destroy_env_list(t_env_var **item)
 {
 	if (*item == NULL)
 		return (0);
@@ -38,17 +23,49 @@ int		destroy_env_list(t_env_var **item)
 	return (0);
 }
 
-void 	destroy_env(void)
+t_env_data	*get_meta_data(int first_call)
 {
-	if (all_env_as_array != NULL)
+	static t_env_data	metadata;
+
+	if (first_call == -1)
 	{
-		free_split(all_env_as_array);
-		all_env_as_array = NULL;
+		free_split(metadata.all_env_as_array);
+		free(metadata.requested_env_var);
+		destroy_env_list(&(metadata.env_list));
 	}
-	if (requested_env_var != NULL)
+	if (first_call == 1)
 	{
-		free(requested_env_var);
-		requested_env_var = NULL;
+		metadata.env_list = x_malloc(sizeof(t_env_var*));
+		metadata.env_list->name = ft_strdup("author");
+		metadata.env_list->value = ft_strdup("vo-nguye");
+		metadata.env_list->next = 0;
+		metadata.requested_env_var = ft_strdup("");
+		metadata.all_env_as_array = ft_split("yolo yolo", ' ');
 	}
-	destroy_env_list(&env_list);
+	return (&metadata);
+}
+
+void	init_env_list(void)
+{
+	get_meta_data(1);
+}
+
+int	env_var_count(void)
+{
+	int			i;
+	t_env_var	*current;
+
+	i = 0;
+	current = get_meta_data(0)->env_list;
+	while (current)
+	{
+		current = current->next;
+		i++;
+	}
+	return (i);
+}
+
+void	destroy_env(void)
+{
+	get_meta_data(-1);
 }

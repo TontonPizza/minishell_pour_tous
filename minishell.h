@@ -45,49 +45,37 @@
 #include <stdio.h>
 #include <errno.h>
 
-typedef struct 	s_token
+typedef struct		s_token
 {
 	char				*token;
 	int					type;
 	struct	s_token		*next;
-}				t_token;
+}					t_token;
 
-typedef struct 	s_env_var
+typedef struct		s_env_var
 {
 	char				*name;
 	char 				*value;
 	struct s_env_var 	*next;
-}				t_env_var;
+}					t_env_var;
 
-int			g_stdout_copy;
-int 		g_stderr_copy;
-int 		g_last_exit_value;
-
-t_env_var 	*env_list;
-char 		*requested_env_var;
-char 		**all_env_as_array;
-
-int 		execute_cmd_pipe(char ***cmds, int source);
-char		**get_words(char *line);
-char 		**get_words_and_free(char *line);
-int 		env_var_count(void);
-
-
-// Token list
-void		token_add_back(t_token **list, t_token *item);
-int 		token_type(char *word);
-int			list_size(t_token *list);
-void 		print_content(void *content);
+typedef	struct		s_env_data
+{
+	t_env_var 	*env_list;
+	char 		*requested_env_var;
+	char 		**all_env_as_array;
+}					t_env_data;
 
 // ENV MANIPULATION
-void 		destroy_env(void);
-char 		*get_value_and_free_or_not(char *name, int free_or_not);
 void 		init_env_list();
+void 		destroy_env(void);
 
-// Parsing cleaning
-char		*clean_word(char *word);
-char 		**clean_words_up_to_semicolon(char **words);
-void		words_to_token_list_and_free_words(char **words, t_token **f_token);
-char 		**words_after_semicolon(char **words);
+char		**get_env_as_array(void);
+char 		*get_value_and_free_or_not(char *name, int free_or_not);
+int 		env_var_count(void);
+t_env_data	*get_meta_data(int first_call);
+
+void		export_var(char *name, char *value);
+void		unset_env(char *name);
 
 #endif //MINISHELL_MINISHELL_H

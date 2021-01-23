@@ -2,15 +2,8 @@ NAME = minishell
 
 
 SRCS	=	minishell.c \
-			./srcs/execute_cmd_pipe.c \
-			./srcs/line_to_words.c \
-			./srcs/line_to_words_2.c \
-			./srcs/words_to_token.c \
-			./srcs/t_token_list_manipulation.c \
-			./srcs/env_manipulation.c \
-			./srcs/env_manipulation_2.c \
-			./srcs/parsing_token_list.c \
-			./srcs/routine.c \
+			./srcs/environnement/env_manipulation.c \
+			./srcs/environnement/env_manipulation_2.c \
         	./libft/libft.a \
 
 
