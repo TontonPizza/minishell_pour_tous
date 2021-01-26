@@ -88,6 +88,10 @@ t_token		*token_constructor(char *name, int type, int free_val);
 void		token_list_add_last(t_token **first_element, t_token *item);
 void		token_destructor(t_token *item);
 void		destroy_token_list(t_token *item);
+
+// EXPANDER
+char 		*expand_env_variable(char *current, char **result);
+char 		*expand_word(char *word);
 /***********************************/
 /***********************************/
 

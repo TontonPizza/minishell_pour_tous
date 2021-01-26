@@ -12,6 +12,11 @@
 
 #include "../../minishell.h"
 
+/*
+ * op = set => set last_return_code to value
+ * op == get => ignore value
+ */
+
 int 	last_return_code(int op, int value)
 {
 	static int	last_return_code;

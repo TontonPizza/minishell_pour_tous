@@ -37,5 +37,12 @@ void test_token()
 
 int main()
 {
-	test_token();
+	init_env_list();
+
+	char *line = "salut les $author  \\$author";
+
+	char *word = expand_word(line);
+
+	printf("%s\n", word);
+
 }

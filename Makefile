@@ -8,7 +8,7 @@ SRCS	=	minishell.c \
 			./srcs/parsing/lexer.c\
 			./srcs/parsing/lexer_2.c\
 			./srcs/parsing/expander.c\
-			./srcs/parsing/expander_2.c\
+			./srcs/parsing/token_manipulation.c\
         	./libft/libft.a \
 
 
