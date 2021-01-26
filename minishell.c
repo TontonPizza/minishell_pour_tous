@@ -39,7 +39,7 @@ int main()
 {
 	init_env_list();
 
-	char *line = "salut les $author  \\$author";
+	char *line = "salut les $author \\$author";
 
 	char *word = expand_word(line);
 
