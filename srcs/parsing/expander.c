@@ -19,6 +19,28 @@
  *
  */
 
+char		*expand_double_quote(char *word, int *index)
+{
+	char	*result;
+	int		i;
+
+	i = *index + 1;
+	result = ft_strdup("");
+	while (word[i] && word[i] != '"')
+	{
+		if (word[i] == '\\' && is_char_in_set(word[i + 1], "$\\\"\'") && i++)
+			result = join_char_and_free(result, word[i]);
+		else if (word[i] == '$')
+		{
+			if (word[i + 1] == '?')
+				result = ft_strjoin_and_free(result, ft_itoa(last_return_code(get, 0)));
+			else
+				// expand variable
+		}
+
+	}
+}
+
 char		*expand_word(char *word)
 {
 	char	*result;
@@ -28,6 +50,9 @@ char		*expand_word(char *word)
 	i = 0;
 	while (i < ft_strlen(word))
 	{
+		if (word[i] == '$')
+			// expand_variable && continue
+			;
 		if (word[i] == '"')
 			// expand_double_quote && continue
 			;
