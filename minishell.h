@@ -90,7 +90,7 @@ void		token_destructor(t_token *item);
 void		destroy_token_list(t_token *item);
 
 // EXPANDER
-char 		*expand_env_variable(char *current, char **result);
+char 		*expand_env_variable(char *word, int *cursor);
 char 		*expand_word(char *word);
 /***********************************/
 /***********************************/

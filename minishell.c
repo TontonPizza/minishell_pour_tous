@@ -39,10 +39,11 @@ int main()
 {
 	init_env_list();
 
-	char *line = "salut les $author \\$author";
+	int i = 0;
+	char *word = "$author_y_x";
 
-	char *word = expand_word(line);
+	char *result = expand_env_variable(word, &i);
+	printf("%s, %d, %c\n", result, i, word[i]);
 
-	printf("%s\n", word);
 
 }
