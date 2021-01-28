@@ -26,6 +26,15 @@
 #  define FREE_ARG 1
 # endif
 
+# ifndef SIMPLE_QUOTE
+#  define SIMPLE_QUOTE 43
+# endif
+
+# ifndef DOUBLE_QUOTE
+#  define DOUBLE_QUOTE 126
+# endif
+
+
 enum e_token_type_code
 {
 	TYPE_WORD,
@@ -93,6 +102,7 @@ void		destroy_token_list(t_token *item);
 char 		*expand_env_variable(char *word, int *cursor);
 char 		**expand_word(char *word);
 char		*expand_backslash_and_parameters(char *word);
+int 		next_cut(char *word);
 /***********************************/
 /***********************************/
 

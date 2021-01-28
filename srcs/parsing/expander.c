@@ -62,25 +62,24 @@ char	*expand_backslash_and_parameters(char *word)
 		if (word[i] == '\'')
 			mode *= -1;
 		if (word[i] == '\\' && mode < 0
-			&& is_char_in_set(word[i + 1], "\\\"$") == 1 && i++)
+			&& is_char_in_set(word[i + 1], "\\\"$") == 1 && ++i)
 			res = join_char_and_free(res, word[i++]);
 		else if (word[i] == '$' && mode == -1)
 			res = ft_strjoin_and_free(res, expand_env_variable(word, &i));
-		else if (word[i] == '"' && i++)
-			res = join_char_and_free(res, 14);
-		else if (word[i] == '\'' && i++)
-			res = join_char_and_free(res, 15);
+		else if (word[i] == '"' && ++i)
+			res = join_char_and_free(res, DOUBLE_QUOTE);
+		else if (word[i] == '\'' && ++i)
+			res = join_char_and_free(res, SIMPLE_QUOTE);
 		else
 			res = join_char_and_free(res, word[i++]);
 	}
 	return (res);
 }
 
+
 char 	**word_split(char *word)
 {
-	char	**result;
-
-	return (result);
+	return 0;
 }
 
 char 	*remove_quote(char *word)

@@ -39,22 +39,13 @@ int main()
 {
 	init_env_list();
 
-	export_var("pouet", "castor");
+	char *line;
 
-	int i = 0;
-	char *word;
-	get_next_line(1, &word);
+	get_next_line(1, &line);
 
-	char *result = expand_backslash_and_parameters(word);
+	printf("%s\n", line);
 
-	while (result[i])
-	{
-		if (result[i] > 15)
-			printf("%c", result[i]);
-		else
-			printf("#");
-		i++;
-	}
-	printf("\n");
+	line = expand_backslash_and_parameters(line);
 
+	printf("%s\n", line);
 }
