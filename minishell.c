@@ -42,10 +42,19 @@ int main()
 	export_var("pouet", "castor");
 
 	int i = 0;
-	char *word = "$author $? \\$author \\$? $pouet";
+	char *word;
+	get_next_line(1, &word);
 
 	char *result = expand_backslash_and_parameters(word);
-	printf("%s\n", result);
 
+	while (result[i])
+	{
+		if (result[i] > 15)
+			printf("%c", result[i]);
+		else
+			printf("#");
+		i++;
+	}
+	printf("\n");
 
 }

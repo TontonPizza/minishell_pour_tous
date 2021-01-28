@@ -63,33 +63,44 @@ char	*expand_backslash_and_parameters(char *word)
 			mode *= -1;
 		if (word[i] == '\\' && mode < 0
 			&& is_char_in_set(word[i + 1], "\\\"$") == 1 && i++)
-		{
 			res = join_char_and_free(res, word[i++]);
-			continue ;
-		}
-		if (word[i] == '$' && mode == -1)
-		{
+		else if (word[i] == '$' && mode == -1)
 			res = ft_strjoin_and_free(res, expand_env_variable(word, &i));
-			continue ;
-		}
-		res = join_char_and_free(res, word[i++]);
+		else if (word[i] == '"' && i++)
+			res = join_char_and_free(res, 14);
+		else if (word[i] == '\'' && i++)
+			res = join_char_and_free(res, 15);
+		else
+			res = join_char_and_free(res, word[i++]);
 	}
 	return (res);
 }
-/*
-//char	**expand_word(char *word)
-//{
-//	char	**result;
-//	int 	i;
-//
-//	i = 0;
-//	word = expand_backslash_and_parameters(word);
-//	result = word_split(word);
-//	while (result[i])
-//	{
-//		result[i] = remove_quote(result[i]);
-//		i++;
-//	}
-//
-//	return (result);
-*/
+
+char 	**word_split(char *word)
+{
+	char	**result;
+
+	return (result);
+}
+
+char 	*remove_quote(char *word)
+{
+	char	*result;
+
+	return (result);
+}
+
+char	**expand_word(char *word) {
+	char **result;
+	int i;
+
+	i = 0;
+	word = expand_backslash_and_parameters(word);
+	result = word_split(word);
+	while (result[i]) {
+		result[i] = remove_quote(result[i]);
+		i++;
+	}
+
+	return (result);
+}
