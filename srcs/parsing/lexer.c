@@ -12,7 +12,7 @@
 
 #include "../../minishell.h"
 
-char 		*check_for_separator(char *new_text, char *text, int *cursor)
+char 		*check_for_separator(char *text, int *cursor)
 {
 	char buffer[3];
 
@@ -36,7 +36,7 @@ char		*get_next_word(char *text, int *cursor, int i)
 
 	while ((text[i] == ' ' || text[i] == '\t') && text[i])
 		i++;
-	new_text = check_for_separator(new_text, text + i, &i);
+	new_text = check_for_separator(text + i, &i);
 	if (new_text && ft_strlen(new_text) > 0 && (*cursor += i))
 		return (new_text);
 	while (new_text && text[i] && is_char_in_set(text[i], ";|<> ") == 0)

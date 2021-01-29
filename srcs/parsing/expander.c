@@ -76,12 +76,6 @@ char	*expand_backslash_and_parameters(char *word)
 	return (res);
 }
 
-
-char 	**word_split(char *word)
-{
-	return 0;
-}
-
 char 	*remove_quote(char *word)
 {
 	char	*result;

@@ -35,6 +35,16 @@ void test_token()
 
 }
 
+
+char 	*offset_word(char **word)
+{
+	char *result;
+
+	(*word) += 3;
+	result = ft_strdup(*word);
+	return (result);
+}
+
 int main()
 {
 	init_env_list();
@@ -43,9 +53,9 @@ int main()
 
 	get_next_line(1, &line);
 
-	printf("%s\n", line);
-
 	line = expand_backslash_and_parameters(line);
 
-	printf("%s\n", line);
+	char **words = word_split(line);
+	print_split(words);
+
 }
