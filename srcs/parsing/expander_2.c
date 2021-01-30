@@ -17,7 +17,6 @@ char	*next_split(char *word, char **result)
 	int		i;
 	char	c;
 
-	printf("called\n");
 	i = 0;
 	while (word[i] == ' ')
 		i++;

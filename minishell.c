@@ -56,6 +56,11 @@ int main()
 	line = expand_backslash_and_parameters(line);
 
 	char **words = word_split(line);
-	print_split(words);
+	int i = 0;
+	while (words[i])
+	{
+		printf("%s\n", remove_quote(words[i]));
+		i++;
+	}
 
 }

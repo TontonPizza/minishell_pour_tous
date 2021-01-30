@@ -79,7 +79,26 @@ char	*expand_backslash_and_parameters(char *word)
 char 	*remove_quote(char *word)
 {
 	char	*result;
+	int 	i;
 
+	result = 0;
+	i = 0;
+	while (word[i])
+	{
+		if (word[i] == DOUBLE_QUOTE && ++i) {
+			while (word[i] && word[i] != DOUBLE_QUOTE)
+				result = join_char_and_free(result, word[i++]);
+			if (word[i] == DOUBLE_QUOTE)
+				i++;
+		} else if (word[i] == SIMPLE_QUOTE && ++i) {
+			while (word[i] && word[i] != SIMPLE_QUOTE)
+				result = join_char_and_free(result, word[i++]);
+			if (word[i] == SIMPLE_QUOTE)
+				i++;
+		} else
+			result = join_char_and_free(result, word[i++]);
+	}
+	result[i] = 0;
 	return (result);
 }
 
