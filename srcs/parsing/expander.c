@@ -109,10 +109,10 @@ char	**expand_word(char *word) {
 	i = 0;
 	word = expand_backslash_and_parameters(word);
 	result = word_split(word);
+	free(word);
 	while (result[i]) {
 		result[i] = remove_quote(result[i]);
 		i++;
 	}
-
 	return (result);
 }

@@ -35,15 +35,29 @@ void test_token()
 
 }
 
+void		add_words_to_token_list(t_token **list, char **words);
+
 int main()
 {
-	char **words = ft_split("salut les copains comment ça va", ' ');
 
-	print_split(words);
-	printf("%d---\n", split_size(words));
+	t_token *list = 0;
+	char	*line;
+	char	**words;
 
-	words_to_tokens_and_offset_words(&words);
-	printf("%d---\n", split_size(words));
+	get_next_line(1, &line);
+	words = get_words_and_free(line);
+
+	words_to_tokens_and_offset_words(&words, &list);
+
+	t_token *cursor = list;
+	while (cursor)
+	{
+		printf("%s %d\n", cursor->token, cursor->type);
+		cursor = cursor->next;
+	}
+
+	printf("[[[[-----]]]]\n");
 	print_split(words);
 	free_split(words);
+	destroy_token_list(list);
 }

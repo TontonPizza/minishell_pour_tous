@@ -107,7 +107,8 @@ char 		**word_split(char *word);
 char 		*remove_quote(char *word);
 
 // TOKENIZER
-t_token		*words_to_tokens_and_offset_words(char ***words);
+void		words_to_tokens_and_offset_words(char ***words, t_token **list);
+void		add_words_to_token_list(t_token **list, char **words);
 
 
 /***********************************/

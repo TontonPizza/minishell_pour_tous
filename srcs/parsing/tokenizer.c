@@ -19,22 +19,37 @@
 #include "../../minishell.h"
 
 
-t_token		*words_to_tokens_and_offset_words(char ***words)
+void		add_words_to_token_list(t_token **list, char **words)
 {
-	t_token	*token;
+	int		i;
+
+	i = 0;
+	while (words[i])
+	{
+		token_list_add_last(list, token_constructor(words[i], TYPE_WORD, 0));
+		i++;
+	}
+}
+
+void		words_to_tokens_and_offset_words(char ***words, t_token **list)
+{
+	char 	**expand;
 	int 	i;
 
 	i = 0;
 	while ((*words)[i] && token_type((*words)[i]) != TYPE_END)
 	{
-		/*
-		 *  ajoute le resultat de l'expand à la liste chainée
-		 *
-		 */
+		if (token_type((*words)[i]) != TYPE_WORD)
+		{
+			token_list_add_last(list, token_constructor(*words[i], token_type((*words)[i]), 0));
+		}
+		else
+		{
+			expand = expand_word((*words)[i]);
+			add_words_to_token_list(list, expand);
+			free_split(expand);
+		}
 		i++;
-		if (i == 3)
-			break;
 	}
-	*words = offset_word(*words, i);
-	return (token);
+	*words = offset_word((*words), i);
 }
