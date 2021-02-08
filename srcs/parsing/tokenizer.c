@@ -35,13 +35,15 @@ void		words_to_tokens_and_offset_words(char ***words, t_token **list)
 {
 	char 	**expand;
 	int 	i;
+	t_token *tok;
 
 	i = 0;
 	while ((*words)[i] && token_type((*words)[i]) != TYPE_END)
 	{
 		if (token_type((*words)[i]) != TYPE_WORD)
 		{
-			token_list_add_last(list, token_constructor(*words[i], token_type((*words)[i]), 0));
+			tok = token_constructor((*words)[i], token_type((*words)[i]), 0);
+			token_list_add_last(list, tok);
 		}
 		else
 		{

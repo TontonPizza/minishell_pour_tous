@@ -46,6 +46,13 @@ void 		do_sth_while_words(char **words)
 	{
 		words_to_tokens_and_offset_words(&words, &list);
 		cursor = list;
+		/*
+		 *
+		 * à la place du while (cursor) devra etre la boucle d'execution
+		 *
+		 *
+		 *
+		 */
 		while (cursor)
 		{
 			printf("%s%d\n", cursor->token, cursor->type);
@@ -63,7 +70,7 @@ int main()
 	t_token *list = 0;
 	char	**words;
 
-	words = get_words("hello hello ; pouet pouet ; x x x;");
+	words = get_words("hello hello | pouet pouet ; x x x;");
 
 	do_sth_while_words(words);
 }
