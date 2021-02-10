@@ -12,6 +12,19 @@
 
 #include "../../minishell.h"
 
+int 	token_list_size(t_token *list)
+{
+	int	i;
+
+	i = 0;
+	while (list)
+	{
+		list = list->next;
+		i++;
+	}
+	return (i);
+}
+
 void	token_list_add_last(t_token **first_element, t_token *item)
 {
 	t_token *cursor;

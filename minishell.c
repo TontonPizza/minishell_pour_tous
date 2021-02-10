@@ -35,13 +35,8 @@ void 		do_sth_while_words(char **words)
 		/*
 		 *
 		 */
-		printf("conformity : %d\n", check_conformity(cursor));
-		while (cursor)
-		{
-			printf("%s %d ", cursor->token, cursor->type);
-			cursor = cursor->next;
-		}
-		printf("--\n");
+		print_split(export_token_to_command(cursor));
+		printf("@@@\n");
 		destroy_token_list(list);
 		list = 0;
 	}
@@ -53,7 +48,7 @@ int main()
 	t_token *list = 0;
 	char	**words;
 
-	words = get_words("hello  >>  <hello | pouet pouet ; x x x;");
+	words = get_words("echo toto pouet < file >> file < file > file");
 
 	do_sth_while_words(words);
 }

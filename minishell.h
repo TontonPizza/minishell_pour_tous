@@ -39,6 +39,7 @@ enum e_error_type
 	CODE_OK,
 	CODE_NO_SUCH_FILE_OR_DIRECTORY,
 	CODE_SYNTAX_ERROR
+
 };
 
 enum e_token_type_code
@@ -103,6 +104,7 @@ t_token		*token_constructor(char *name, int type, int free_val);
 void		token_list_add_last(t_token **first_element, t_token *item);
 void		token_destructor(t_token *item);
 void		destroy_token_list(t_token *item);
+int			token_list_size(t_token *list);
 
 // EXPANDER
 char 		*expand_env_variable(char *word, int *cursor);
@@ -120,7 +122,7 @@ void		add_words_to_token_list(t_token **list, char **words);
 // EXECUTION LOOP
 
 int			check_conformity(t_token *list);
-
+char 		**export_token_to_command(t_token *list);
 /***********************************/
 /***********************************/
 

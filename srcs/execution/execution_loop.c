@@ -29,11 +29,37 @@ int		check_conformity(t_token *list)
 		if (type == TYPE_IN || type == TYPE_OUT || type == TYPE_APPEND)
 		{
 			if (cursor->next == 0 || cursor->next->type != TYPE_WORD)
+			{
+				last_return_code(set, CODE_SYNTAX_ERROR); // pas sur de cette ligne
 				return (CODE_SYNTAX_ERROR);
+			}
 		}
 		cursor = cursor->next;
 	}
 	return (CODE_OK);
+}
+
+char 	**export_token_to_command(t_token *list)
+{
+	char	**words;
+	int 	i;
+	int 	k;
+
+	i = 0;
+	words = x_malloc(sizeof(char *) * token_list_size(list));
+	while (list && list->type != TYPE_PIPE)
+	{
+		k = list->type;
+		if (k == TYPE_APPEND || k == TYPE_OUT || k == TYPE_IN)
+		{
+			list = list->next;
+		}
+		else if (k == TYPE_WORD)
+			words[i++] = ft_strdup(list->token);
+		list = list->next;
+	}
+	words[i] = 0;
+	return (words);
 }
 
 int 	execution_loop(t_token *list)
@@ -41,8 +67,9 @@ int 	execution_loop(t_token *list)
 	t_token	*cursor = list;
 	char 	**command;
 
-	if (cursor == 0)
+	if (cursor == 0 || check_conformity(list) != 0)
 		return -1;
+	command = export_token_to_command(list);
 	/*
 	 *  parcourir curssor, vérifier la conformité, gérer les redirections
 	 *  mettre tous les mots libre dans un char **command
@@ -58,6 +85,5 @@ int 	execution_loop(t_token *list)
 	/*
 	 *  executer le merdier
 	 */
-
-	return (execution_loop(cursor));
+	return (execution_loop(cursor->next));
 }
