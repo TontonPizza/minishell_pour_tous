@@ -75,26 +75,16 @@ int 	execution_loop(t_token *list)
 	if (cursor == 0 || check_conformity(list) != 0)
 		return -1;
 	command = export_token_to_command(list);
-	/*
-	 * fait =>  parcourir curssor, vérifier la conformité, gérer les redirections
-	 * fait =>  mettre tous les mots libre dans un char **command
-	 *
-	 * pousser la list jusqu'apres le premier | si il ya
-	 */
 
 	/*
  	* ouvrir les fds qu'il faut si les files existent
  	*/
 
 	/*
-	 *  chercher l'executable si /
-	 *  sinon chercher si builtin et path
+	 *  executer le merdier => c'est ici qu'on cherche l'executable
 	 */
 
-
-
-	/*
-	 *  executer le merdier
-	 */
+	while (cursor && cursor->type != TYPE_PIPE) //pousser la list jusqu'apres le premier | si il ya
+		cursor = cursor->next;
 	return (execution_loop(cursor->next));
 }
