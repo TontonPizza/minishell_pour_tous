@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/types.h>
+# include <sys/stat.h>
 # include <sys/wait.h>
 # include <signal.h>
 # include <dirent.h>
@@ -55,7 +56,8 @@ enum e_token_type_code
 enum e_operation_type
 {
 	get,
-	set
+	set,
+	op_close
 };
 
 typedef struct s_token
@@ -123,6 +125,21 @@ void		add_words_to_token_list(t_token **list, char **words);
 
 int			check_conformity(t_token *list);
 char 		**export_token_to_command(t_token *list);
+
+
+// ERROR BUFFER
+int	initialize_path_to_buffer(void);
+int	g_new_stderr(int op, int value);
+int	g_new_stderr(int op, int value);
+char	*path_to_buffer(int op);
+int		clear_error_buffer(void);
+char	*get_buffer_content(void);
+
+
+// BUILD INS
+
+char		*path_to_binary(char *word);
+
 /***********************************/
 /***********************************/
 

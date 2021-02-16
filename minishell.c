@@ -46,27 +46,4 @@ void 		do_sth_while_words(char **words)
 int main(int argc, char **argv)
 {
 
-	char *cmd[] = {"/bin/dls", 0};
-	int pid;
-
-	pid = fork();
-	if (pid == CHILD_PROCESS)
-	{
-		execve(cmd[0], cmd, 0);
-		printf("child : %s\n", strerror(errno));
-		last_return_code(set, errno);
-		exit(0);
-	}
-	else
-	{
-		wait(0);
-		printf("parent : %s\n", strerror(last_return_code(get, 0)));
-	}
-
-//	t_token *list = 0;
-//	char	**words;
-//
-//	words = get_words("echo toto < pouet caca < file >> file < file > file");
-//
-//	do_sth_while_words(words);
 }

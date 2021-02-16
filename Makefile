@@ -12,6 +12,8 @@ SRCS	=	minishell.c \
 			./srcs/parsing/expander_2.c\
 			./srcs/parsing/token_manipulation.c\
 			./srcs/execution/execution_loop.c \
+			./srcs/error_buffer/error_buffer.c \
+			./srcs/builtins/path_to_binary.c \
         	./libft/libft.a \
 
 
