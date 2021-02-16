@@ -81,6 +81,8 @@ typedef struct s_env_data
 	char		**all_env_as_array;
 }					t_env_data;
 
+int         g_new_stderr;
+
 // ENV MANIPULATION
 void		init_env_list(void);
 void		destroy_env(void);
@@ -128,9 +130,8 @@ char 		**export_token_to_command(t_token *list);
 
 
 // ERROR BUFFER
-int	initialize_path_to_buffer(void);
-int	g_new_stderr(int op, int value);
-int	g_new_stderr(int op, int value);
+int		initialize_path_to_buffer(void);
+//int		g_new_stderr(int op, int value);
 char	*path_to_buffer(int op);
 int		clear_error_buffer(void);
 char	*get_buffer_content(void);

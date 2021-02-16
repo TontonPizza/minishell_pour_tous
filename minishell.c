@@ -45,5 +45,22 @@ void 		do_sth_while_words(char **words)
 
 int main(int argc, char **argv)
 {
+	initialize_path_to_buffer();
 
+	pid_t pid;
+	char *cmds[] = {"/bin/echo", "pouet", 0};
+
+
+	pid = fork();
+	if (pid == 0)
+	{
+		execve(cmds[0], cmds, 0);
+		write(STDERR_FILENO, "error 0", 7);
+		exit(0);
+	}
+	else
+		waitpid(pid, 0, 0);
+
+	printf("error: %s\n", get_buffer_content());
+	clear_error_buffer();
 }

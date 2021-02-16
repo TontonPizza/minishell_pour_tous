@@ -62,30 +62,31 @@ char	*path_to_buffer(int op)
 	return (NULL);
 }
 
-int g_new_stderr(int op, int value)
-{
-	static int stderr_fd;
-
-	if (op == set)
-	{
-		stderr_fd = value;
-		dup2(stderr_fd, 2);
-	}
-	if (op == op_close)
-	{
-		close(stderr_fd);
-	}
-	return stderr_fd;
-}
+//int g_new_stderr(int op, int value)
+//{
+//	static int stderr_fd;
+//
+//	if (op == set)
+//	{
+//		close(2);
+//		stderr_fd = value;
+//		dup2(stderr_fd, 2);
+//	}
+//	if (op == op_close)
+//	{
+//		close(stderr_fd);
+//	}
+//	return stderr_fd;
+//}
 
 int initialize_path_to_buffer(void)
 {
 	int fd;
 
-	fd = open(path_to_buffer(set), O_TRUNC);
+	fd = open(path_to_buffer(set), O_TRUNC | O_RDWR);
 	if (fd < 0)
 		return (-1);
-	close(fd);
-	g_new_stderr(set, open(path_to_buffer(get), O_TRUNC | O_RDWR));
+	g_new_stderr = fd;
+	dup2(g_new_stderr, 2);
 	return (0);
 }
