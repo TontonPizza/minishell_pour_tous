@@ -62,8 +62,9 @@ char 	**export_token_to_command(t_token *list) // prends la liste et extrait la 
 	return (words);
 }
 
-int		exec_pipe(char **cmd, int source)
+int		exec_pipe(char **cmd)
 {
+	log_error("command to execute : ", cmd[0]);
 	return (0);
 }
 
@@ -90,6 +91,7 @@ int		get_real_source(t_token *list, int source)
 			close(result);
 			list = list->next;
 			result = open(list->token, O_RDONLY);
+			log_error("get source from : ", list->token);
 			if (result < 0)
 			{
 				generate_error("Error : can't open file");
@@ -112,6 +114,7 @@ int 	get_real_dest(t_token *list, int dest)
 		{
 			close(result);
 			result = open(list->next->token, O_WRONLY | O_CREAT, 0777);
+			log_error("set dest to : ", list->next->token);
 			if (result < 0)
 				generate_error("Can't open file");
 		}
@@ -119,6 +122,7 @@ int 	get_real_dest(t_token *list, int dest)
 		{
 			close(result);
 			result = open(list->next->token, O_WRONLY | O_APPEND, 0777);
+			log_error("set dest to : ", list->next->token);
 			if (result < 0)
 				generate_error("Can't open file");
 		}
@@ -129,19 +133,23 @@ int 	get_real_dest(t_token *list, int dest)
 
 int 	execution_loop(t_token *list, int source)
 {
+	log_error("enter execution loop", "");
 	int		pipe_fd[2];
+	char 	**command;
 
 	if (pipe(pipe_fd) < 0)
 		return (-1);
 	if (list == 0 && close(source) == 0)
 		return (0);
-	// get the real source (source or < input file) : dup2(real_source, 0)
+	if (next_command_after_pipe(list) == 0)
+		dup2(g_new_stdout, 1);
 	dup2(get_real_source(list, source), 0);
-	// get the real dest : dup2(pipe_fd[1], fd)
 	dup2(get_real_dest(list, pipe_fd[1]), 1);
 
-
-	// exec_pipe() if not error
+	if (is_there_an_error() == FALSE)
+		exec_pipe(export_token_to_command(list));
+	else
+		log_error("error found, not pipe executed", "");
 
 	return execution_loop(next_command_after_pipe(list), pipe_fd[0]);
 }

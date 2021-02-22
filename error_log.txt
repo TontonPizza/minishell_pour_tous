@@ -1,0 +1,7 @@
+enter execution loop
+get source from : pouet
+set dest to : toto
+error found, not pipe executed
+enter execution loop
+error found, not pipe executed
+enter execution loop

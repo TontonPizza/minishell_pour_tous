@@ -15,6 +15,13 @@
 //void test_env();
 //void test_parsing();
 
+void 	log_error(char *msg, char *complement)
+{
+	write(log_file, msg, ft_strlen(msg));
+	write(log_file, complement, ft_strlen(complement));
+	write(log_file, "\n", 1);
+}
+
 void	test_thing(t_token *list)
 {
 	int i = source_fd(-1, list);
@@ -26,12 +33,19 @@ int main(int argc, char **argv)
 {
 	initialize_path_to_buffer();
 	init_env_list();
+	log_file = open("error_log.txt", O_RDWR | O_CREAT, 0777);
 
-	int fd = open(argv[1], O_CREAT | O_RDWR, 0777);
+	char *line = ft_strdup("/bin/cat Makefile < pouet >> toto | grep = ");
+	char **words = get_words_and_free(line);
 
-	printf("fd = %d\n", fd);
+	t_token *list;
 
-	write(fd, "ssxx", 3);
+	words_to_tokens_and_offset_words(&words, &list);
 
+	execution_loop(list, -1);
+
+//	log_error(get_buffer_content(), "");
+
+	close(log_file);
 //	clear_error_buffer();
 }

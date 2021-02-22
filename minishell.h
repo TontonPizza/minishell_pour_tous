@@ -92,6 +92,7 @@ int 		g_new_stdin;
 int			g_new_stdout;
 
 int 		debug_loop;
+int 		log_file;
 
 // ENV MANIPULATION
 void		init_env_list(void);
@@ -157,5 +158,9 @@ char		*path_to_binary(char *word);
 
 /***********************************/
 /***********************************/
+
+
+void 	log_error(char *msg, char *complement);
+
 
 #endif //MINISHELL_MINISHELL_H

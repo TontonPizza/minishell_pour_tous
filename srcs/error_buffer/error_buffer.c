@@ -41,8 +41,10 @@ char	*get_buffer_content(void)
 	if (ft_strlen(result) == 0)
 	{
 		free(result);
+		close(fd);
 		return (NULL);
 	}
+	close(fd);
 	return (result);
 }
 
@@ -62,26 +64,9 @@ char	*path_to_buffer(int op)
 	return (NULL);
 }
 
-//int g_new_stderr(int op, int value)
-//{
-//	static int stderr_fd;
-//
-//	if (op == set)
-//	{
-//		close(2);
-//		stderr_fd = value;
-//		dup2(stderr_fd, 2);
-//	}
-//	if (op == op_close)
-//	{
-//		close(stderr_fd);
-//	}
-//	return stderr_fd;
-//}
 
 void generate_error(char *message)
 {
-	clear_error_buffer();
 	ft_putendl_fd(message, g_new_stderr);
 }
 
@@ -90,7 +75,7 @@ int	is_there_an_error(void)
 	char 	*str;
 
 	str = get_buffer_content();
-	if (str == 0)
+	if (str == 0 || ft_strlen(str) == 0)
 	{
 		free(str);
 		return (FALSE);
