@@ -34,6 +34,7 @@ void		add_words_to_token_list(t_token **list, char **words)
 void		words_to_tokens_and_offset_words(char ***words, t_token **list)
 {
 	char 	**expand;
+	char 	**tmp;
 	int 	i;
 	t_token *tok;
 
@@ -54,5 +55,7 @@ void		words_to_tokens_and_offset_words(char ***words, t_token **list)
 		i++;
 	}
 	i++;
+	tmp = *words;
 	*words = offset_word((*words), i);
+	free(tmp);
 }

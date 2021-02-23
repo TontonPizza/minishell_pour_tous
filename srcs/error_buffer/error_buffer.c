@@ -14,8 +14,9 @@
 
 void 	display_error()
 {
-	char *error_msg = get_buffer_content();
-	if (error_msg == 0)
+	char *error_msg;
+	error_msg = get_buffer_content();
+	if (error_msg == 0 || ft_strlen(error_msg) == 0)
 		return ;
 	ft_putendl_fd(error_msg, g_new_stdout);
 }

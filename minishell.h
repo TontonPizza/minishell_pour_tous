@@ -91,6 +91,7 @@ int         g_new_stderr;
 int 		g_new_stdin;
 int			g_new_stdout;
 
+
 int 		debug_loop;
 int 		log_file;
 
