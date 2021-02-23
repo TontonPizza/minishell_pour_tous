@@ -19,6 +19,7 @@ void 	display_error()
 	if (error_msg == 0 || ft_strlen(error_msg) == 0)
 		return ;
 	ft_putendl_fd(error_msg, g_new_stdout);
+	clear_error_buffer();
 }
 
 int		clear_error_buffer(void)

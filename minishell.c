@@ -41,12 +41,12 @@ void routine(char *line)
 		destroy_token_list(list);
 		g_new_stdout = dup(1);
 		display_error();
-		clear_error_buffer();
 	}
 }
 
 int main(int argc, char **argv)
 {
+
 	initialize_path_to_buffer();
 	init_env_list();
 	export_var("PATH", "/bin");
@@ -55,12 +55,16 @@ int main(int argc, char **argv)
 
 	char *line;
 	g_new_stdin = dup(0);
-
+	write(g_new_stdout, ">>> ", 4);
 	while (get_next_line(g_new_stdin, &line))
 	{
-		routine(line);
+		if (ft_strlen(line) == 0)
+			;
+		else
+			routine(line);
+		write(g_new_stdout, ">>> ", 4);
 	}
 
 	destroy_env();
-//	clear_error_buffer();
+	clear_error_buffer();
 }

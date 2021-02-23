@@ -20,7 +20,7 @@
 38 : Function not implemented
 40 : Too many levels of symbolic links
 42 : No message of desired type
-44 : Channel number out of range
+44 : Channel number out of rangeS
 46 : Level 3 halted
 48 : Link number out of range
 50 : No CSI structure available

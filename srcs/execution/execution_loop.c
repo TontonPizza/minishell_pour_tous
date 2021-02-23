@@ -74,9 +74,7 @@ int		exec_pipe(char **cmd)
 	if (pid == CHILD_PROCESS)
 	{
 		if (ft_strchr(cmd[0], '/') == 0)
-		{
 			cmd[0] = path_to_binary(cmd[0]);
-		}
 		execve(cmd[0], cmd, get_env_as_array());
 		free_split(cmd);
 		exit(0);
@@ -151,9 +149,7 @@ int 	execution_loop(t_token *list, int source)
 	int		pipe_fd[2];
 
 	if (list == 0 && close(source) == 0)
-	{
 		return (0);
-	}
 	if (pipe(pipe_fd) < 0)
 		return (-1);
 	dup2(get_real_source(list, source), 0);
@@ -166,6 +162,11 @@ int 	execution_loop(t_token *list, int source)
 		dup2(get_real_dest(list, pipe_fd[1]), 1);
 	if (is_there_an_error() == FALSE)
 		exec_pipe(export_token_to_command(list));
+	else
+	{
+		display_error();
+		clear_error_buffer();
+	}
 	close(pipe_fd[1]);
 	return execution_loop(next_command_after_pipe(list), pipe_fd[0]);
 }
