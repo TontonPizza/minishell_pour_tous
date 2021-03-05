@@ -13,6 +13,7 @@ SRCS	=	minishell.c \
 			./srcs/parsing/token_manipulation.c\
 			./srcs/execution/execution_loop.c \
 			./srcs/error_buffer/error_buffer.c \
+			./srcs/error_buffer/error_buffer_2.c \
 			./srcs/builtins/path_to_binary.c \
 			./srcs/execution/fd_manipulation.c \
 			./srcs/execution/exec_binary.c \

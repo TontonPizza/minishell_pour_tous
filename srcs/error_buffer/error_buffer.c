@@ -12,30 +12,6 @@
 
 #include "../../minishell.h"
 
-void 	display_error()
-{
-	char *error_msg;
-	error_msg = get_buffer_content();
-	if (error_msg == 0 || ft_strlen(error_msg) == 0)
-	{
-		last_return_code(set, 0);
-		return ;
-	}
-	ft_putendl_fd(error_msg, g_new_stdout);
-	clear_error_buffer();
-}
-
-int		clear_error_buffer(void)
-{
-	int fd;
-
-	fd = open(path_to_buffer(get), O_TRUNC);
-	if (fd < 0)
-		return (-1);
-	close(fd);
-	return (0);
-}
-
 char	*get_buffer_content(void)
 {
 	char	*result;
@@ -78,13 +54,14 @@ char	*path_to_buffer(int op)
 }
 
 
-void generate_error(char *message, int error_code)
+int		generate_error(char *message, int error_code)
 {
 	if (last_return_code(get, 0) == 0 && error_code != IGNORE_ERROR)
 	{
 		last_return_code(set, error_code);
 	}
 	ft_putendl_fd(message, g_new_stderr);
+	return (-1);
 }
 
 int	is_there_an_error(void)

@@ -12,9 +12,6 @@
 
 #include "minishell.h"
 
-//void test_env();
-//void test_parsing();
-
 void 	log_error(char *msg, char *complement)
 {
 	write(log_file, msg, ft_strlen(msg));
@@ -48,11 +45,9 @@ void routine(char *line)
 
 int main(int argc, char **argv)
 {
-
 	initialize_path_to_buffer();
 	init_env_list();
 	export_var("PATH", "/bin");
-
 
 	log_file = open("error_log.txt", O_RDWR | O_TRUNC, 0777);
 
