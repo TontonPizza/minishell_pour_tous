@@ -16,7 +16,7 @@
 int 	search_binary_or_builtin_and_exec(char **cmd)
 {
 	if (vo_strcmp(cmd[0], "echo") == 0)
-		;
+		return (builtin_echo(cmd));
 	if (vo_strcmp(cmd[0], "export") == 0)
 		return (builtin_export(cmd));
 	if (vo_strcmp(cmd[0], "unset") == 0)

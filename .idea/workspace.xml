@@ -20,10 +20,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minishell.c" beforeDir="false" afterPath="$PROJECT_DIR$/minishell.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/minishell.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/execution/builtin_1.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/builtins/builtin_env.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/execution/exec_binary.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/execution/exec_binary.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parsing/expander.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parsing/expander.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/builtins/builtin_export_unset.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/builtins/builtin_export_unset.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/error_buffer/error_buffer.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/error_buffer/error_buffer.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/execution/execution_loop.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/execution/execution_loop.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +64,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/srcs/bullshit_functions" />
       <recent name="$PROJECT_DIR$/srcs/builtins" />
     </key>
   </component>
@@ -117,7 +119,7 @@
       <workItem from="1613457827807" duration="18257000" />
       <workItem from="1614085239016" duration="3251000" />
       <workItem from="1614866174160" duration="64000" />
-      <workItem from="1614866267214" duration="5977000" />
+      <workItem from="1614866267214" duration="10105000" />
     </task>
     <servers />
   </component>

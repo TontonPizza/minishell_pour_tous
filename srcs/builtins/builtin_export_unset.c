@@ -64,7 +64,7 @@ int 	builtin_export(char **cmd)
 		if (is_argument_valid(cmd[i]))
 			export_word(cmd[i]);
 		else
-			generate_error("export : invalid identifier");
+			generate_error("export : invalid identifier", 1);
 		i++;
 	}
 	return (0);

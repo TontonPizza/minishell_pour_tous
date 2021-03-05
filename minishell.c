@@ -27,6 +27,7 @@ void routine(char *line)
 	char	**words;
 	char 	**tool;
 	t_token *list;
+	int 	no_empty;
 
 	words = get_words_and_free(line);
 	tool = words;
@@ -37,9 +38,11 @@ void routine(char *line)
 		words_to_tokens_and_offset_words(&tool, &list);
 		if (list && check_conformity(list) == 0)
 			execution_loop(list, -1);
+		no_empty = (list == 0);
 		destroy_token_list(list);
 		g_new_stdout = dup(1);
-		display_error();
+		if (no_empty)
+			display_error();
 	}
 }
 
@@ -49,6 +52,7 @@ int main(int argc, char **argv)
 	initialize_path_to_buffer();
 	init_env_list();
 	export_var("PATH", "/bin");
+
 
 	log_file = open("error_log.txt", O_RDWR | O_TRUNC, 0777);
 

@@ -30,7 +30,7 @@ int		check_conformity(t_token *list)
 		if (cursor->next && (cursor->next->type * cursor->type) != 0)
 		{
 			msg = ft_strjoin("syntax error after ", cursor->token);
-			generate_error(msg);
+			generate_error(msg, 2);
 			free(msg);
 			return (CODE_SYNTAX_ERROR);
 		}
@@ -38,7 +38,7 @@ int		check_conformity(t_token *list)
 		{
 			if (cursor->next == 0 || cursor->next->type != TYPE_WORD)
 			{
-				generate_error("syntax error after redirection");
+				generate_error("syntax error after redirection", 2);
 				return (CODE_SYNTAX_ERROR);
 			}
 		}
@@ -96,7 +96,7 @@ int		get_real_source(t_token *list, int source)
 			result = open(list->token, O_RDONLY);
 			if (result < 0)
 			{
-				generate_error("Error : can't open file");
+				generate_error("Permission denied", 1);
 				return (result);
 			}
 		}
@@ -117,14 +117,14 @@ int 	get_real_dest(t_token *list, int dest)
 			close(result);
 			result = open(list->next->token, O_WRONLY | O_CREAT, 0777);
 			if (result < 0)
-				generate_error("Can't open file");
+				generate_error("Can't open file", 1);
 		}
 		if (list->type == TYPE_APPEND)
 		{
 			close(result);
 			result = open(list->next->token, O_WRONLY | O_APPEND, 0777);
 			if (result < 0)
-				generate_error("Can't open file");
+				generate_error("Can't open file", 1);
 		}
 		list = list->next;
 	}
