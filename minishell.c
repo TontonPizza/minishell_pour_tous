@@ -51,6 +51,7 @@ int main(int argc, char **argv)
 
 	log_file = open("error_log.txt", O_RDWR | O_TRUNC, 0777);
 
+
 	char *line;
 	g_new_stdin = dup(0);
 	write(g_new_stdout, ">>> ", 4);

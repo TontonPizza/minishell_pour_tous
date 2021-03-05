@@ -12,14 +12,19 @@
 
 #include "../../minishell.h"
 
-int		does_file_exist_and_is_executable(char *path)
+/*
+ * does file exist and is executable
+ */
+int		isfile(char *path)
 {
 	struct stat sb;
-
+	int		i;
+	i = 0;
 	if (stat(path, &sb) == 0 && sb.st_mode & S_IXUSR)
-		return (TRUE);
-	else
-		return (FALSE);
+		return (1);
+	if (stat(path, &sb) == 0 && sb.st_mode & S_IFREG)
+		return (126);
+	return (127);
 }
 
 int 	search_binary_or_builtin_and_exec(char **cmd)
@@ -52,8 +57,8 @@ int		exec_pipe(char **cmd)
 	path = cmd[0];
 	if (ft_strchr(cmd[0], '/') == 0)
 		path = path_to_binary(cmd[0]);
-	if (does_file_exist_and_is_executable(path) == FALSE)
-		return (generate_error("binary not found", 127));
+	if (isfile(path) != 1)
+		return (generate_error("Command not found", isfile(path)));
 	pid = fork();
 	if (pid < 0)
 		return (0);

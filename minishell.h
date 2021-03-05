@@ -171,6 +171,7 @@ int 		builtin_env(void);
 int 		builtin_export(char **cmd);
 int 		builtin_unset(char **cmd);
 int 		builtin_echo(char **cmd);
+int			isfile(char *path);
 /***********************************/
 /***********************************/
 // BULLSHIT
