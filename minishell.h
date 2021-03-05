@@ -27,6 +27,10 @@
 #  define FREE_ARG 1
 # endif
 
+# ifndef NO_FREE
+#  define NO_FREE 0
+# endif
+
 # ifndef SIMPLE_QUOTE
 #  define SIMPLE_QUOTE 11
 # endif

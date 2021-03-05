@@ -14,19 +14,42 @@
 
 int 	is_argument_valid(char *word)
 {
-	return (0);
+	int i;
+
+	i = 0;
+	while (word[i])
+	{
+		if (word[i] == '+' && word[i + 1] != '=')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int 	export_word(char *word)
 {
 	char 	*name;
-	char 	*val;
+	char 	*var;
 	int 	i;
 
 	name = ft_strdup(word);
+	var = ft_strdup("");
 	i = 0;
 	while (word[i] && word[i] != '+' && word[i] != '=')
-		;
+		i++;
+	name[i]=0;
+	if (word[i] == '+')
+	{
+		free(var);
+		var = (get_value_and_free_or_not(name, NO_FREE));
+		i++;
+	}
+	i++;
+	if (word[i])
+		var = ft_strjoin_and_free(var, word + i);
+	export_var(name, var);
+	free(name);
+	free(var);
 	return (0);
 }
 
@@ -38,7 +61,10 @@ int 	builtin_export(char **cmd)
 	i = 1;
 	while (cmd[i])
 	{
-
+		if (is_argument_valid(cmd[i]))
+			export_word(cmd[i]);
+		else
+			generate_error("export : invalid identifier");
 		i++;
 	}
 	return (0);
