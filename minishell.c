@@ -12,40 +12,6 @@
 
 #include "minishell.h"
 
-char	**fix_words(char **words)
-{
-	char	**result;
-	int 	i;
-	int 	redirect;
-
-	result = x_malloc(sizeof(char *));
-	result[0] = 0;
-	redirect = 0;
-	i = 0;
-	while(words[i])
-	{
-		if(words[i][0] == '>')
-			redirect =1;
-		if (words[i][0] == '|')
-			redirect = 0;
-		if (words[i][0] == ';' && redirect == 1)
-		{
-			result = split_join_string(result, "|");
-			result = split_join_string(result, "ignore");
-			redirect = 0;
-		}
-		result = split_join_string(result, words[i]);
-		i++;
-	}
-	if (redirect == 1)
-	{
-		result = split_join_string(result, "|");
-		result = split_join_string(result, "ignore");
-	}
-	free_split(words);
-	return result;
-}
-
 void routine(char *line)
 {
 	char	**words;

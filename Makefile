@@ -23,6 +23,7 @@ SRCS	=	minishell.c \
 			./srcs/builtins/builtin_cd.c \
 			./srcs/builtins/builtin_exit.c \
 			./srcs/bullshit_functions/bullshit_functions.c \
+			./srcs/bullshit_functions/bullshit_functions_2.c \
 			./srcs/sighandlers/sighandlers.c \
         	./libft/libft.a \
 
