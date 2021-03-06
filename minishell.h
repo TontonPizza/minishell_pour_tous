@@ -145,6 +145,8 @@ void		add_words_to_token_list(t_token **list, char **words);
 
 // EXECUTION LOOP
 
+void		write_prompt(void);
+void		routine(char *line);
 int			check_conformity(t_token *list);
 char 		**export_token_to_command(t_token *list);
 int 		execution_loop(t_token *list, int source);
@@ -175,6 +177,12 @@ int 		builtin_cd(char **cmd);
 int			isfile(char *path);
 int			builtin_pwd(char **cmd);
 int 		builtin_exit(char **cmd);
+
+
+// SIGNALS
+void sighandler_int(int signum);
+void sighandler_quit(int signum);
+
 /***********************************/
 /***********************************/
 // BULLSHIT

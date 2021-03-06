@@ -54,7 +54,7 @@ char 	**export_token_to_command(t_token *list) // prends la liste et extrait la 
 	int 	k;
 
 	i = 0;
-	words = x_malloc((int)sizeof(char *) * token_list_size(list));
+	words = x_malloc((int)sizeof(char *) * (token_list_size(list) + 2));
 	while (list && list->type != TYPE_PIPE)
 	{
 		k = list->type;

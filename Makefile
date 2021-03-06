@@ -23,6 +23,7 @@ SRCS	=	minishell.c \
 			./srcs/builtins/builtin_cd.c \
 			./srcs/builtins/builtin_exit.c \
 			./srcs/bullshit_functions/bullshit_functions.c \
+			./srcs/sighandlers/sighandlers.c \
         	./libft/libft.a \
 
 
@@ -32,7 +33,7 @@ all: $(NAME)
 					make -C ./libft/
 					make clean -C ./libft
 
-$(NAME): $(SRCS) minishell.h
+$(NAME): $(SRCS) minishell.h Makefile
 		clang $(SRCS) ./srcs/tests/*.c ./libft/libft.a -o minishell
 
 

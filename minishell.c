@@ -12,12 +12,7 @@
 
 #include "minishell.h"
 
-void 	log_error(char *msg, char *complement)
-{
-	write(log_file, msg, ft_strlen(msg));
-	write(log_file, complement, ft_strlen(complement));
-	write(log_file, "\n", 1);
-}
+
 
 void routine(char *line)
 {
@@ -45,6 +40,11 @@ void routine(char *line)
 	free_split(words);
 }
 
+void	write_prompt(void)
+{
+	write(g_new_stdout, ">>> ", 4);
+}
+
 int main(int argc, char **argv)
 {
 	initialize_path_to_buffer();
@@ -53,14 +53,17 @@ int main(int argc, char **argv)
 
 	log_file = open("error_log.txt", O_RDWR | O_TRUNC, 0777);
 
+	signal(SIGINT, sighandler_int);
+	signal(SIGQUIT, sighandler_quit);
+
 	char *line;
 	g_new_stdin = dup(0);
-	write(g_new_stdout, ">>> ", 4);
+	write_prompt();
 	while (get_next_line(g_new_stdin, &line))
 	{
 		if (ft_strlen(line) > 0)
 			routine(line);
-		write(g_new_stdout, ">>> ", 4);
+		write_prompt();
 	}
 	destroy_env();
 	clear_error_buffer();
