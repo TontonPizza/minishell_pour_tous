@@ -21,6 +21,7 @@ int 	builtin_exit(char **cmd)
 	destroy_env();
 	clear_error_buffer();
 	free_at_exit(get, 0 ,0);
+	free_split(cmd);
 	if (cmd[1] != 0)
 		exit(ft_atoi(cmd[1]));
 	exit(0);
