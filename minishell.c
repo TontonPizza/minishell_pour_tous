@@ -12,8 +12,6 @@
 
 #include "minishell.h"
 
-
-
 void routine(char *line)
 {
 	char	**words;
@@ -45,6 +43,7 @@ void	write_prompt(void)
 	write(g_new_stdout, ">>> ", 4);
 }
 
+
 int main(int argc, char **argv)
 {
 	initialize_path_to_buffer();
@@ -65,6 +64,7 @@ int main(int argc, char **argv)
 			routine(line);
 		write_prompt();
 	}
+	write(g_new_stdout, "exit\n", 5);
 	destroy_env();
 	clear_error_buffer();
 }
