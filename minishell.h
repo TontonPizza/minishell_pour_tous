@@ -171,11 +171,15 @@ int 		builtin_env(void);
 int 		builtin_export(char **cmd);
 int 		builtin_unset(char **cmd);
 int 		builtin_echo(char **cmd);
+int 		builtin_cd(char **cmd);
 int			isfile(char *path);
+int			builtin_pwd();
+int 		builtin_exit(char **cmd);
 /***********************************/
 /***********************************/
 // BULLSHIT
 
+int 	last_pipe(int op, int value);
 char 	*place_zero(char *result, int i);
 char 	tr(char a, char b, char c);
 

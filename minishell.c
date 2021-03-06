@@ -32,6 +32,7 @@ void routine(char *line)
 	while (tool)
 	{
 		list = 0;
+		last_pipe(set, FALSE);
 		words_to_tokens_and_offset_words(&tool, &list);
 		if (list && check_conformity(list) == 0)
 			execution_loop(list, -1);
@@ -50,7 +51,6 @@ int main(int argc, char **argv)
 	export_var("PATH", "/bin");
 
 	log_file = open("error_log.txt", O_RDWR | O_TRUNC, 0777);
-
 
 	char *line;
 	g_new_stdin = dup(0);

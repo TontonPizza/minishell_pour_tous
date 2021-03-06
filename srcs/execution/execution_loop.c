@@ -140,13 +140,12 @@ int 	execution_loop(t_token *list, int source)
 	if (pipe(pipe_fd) < 0)
 		return (-1);
 	dup2(get_real_source(list, source), 0);
-	if (next_command_after_pipe(list) == 0)
+	dup2(get_real_dest(list, pipe_fd[1]), 1);
+	if (next_command_after_pipe(list) == 0 && last_pipe(set, TRUE))
 	{
 		dup2(g_new_stdout, 1);
-		close(g_new_stdout);
+//		close(g_new_stdout);
 	}
-	else
-		dup2(get_real_dest(list, pipe_fd[1]), 1);
 	if (is_there_an_error() == FALSE)
 		search_binary_or_builtin_and_exec(export_token_to_command(list));
 	else

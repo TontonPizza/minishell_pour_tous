@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bullshit_functions.c                               :+:      :+:    :+:   */
+/*   builint_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vo-nguye <vo-nguye@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/64 15:35:55 by vo-nguye          #+#    #+#             */
-/*   Updated: 2021/03/64 15:35:55 by vo-nguye         ###   ########.fr       */
+/*   Created: 2021/03/65 01:27:15 by vo-nguye          #+#    #+#             */
+/*   Updated: 2021/03/65 01:27:15 by vo-nguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../minishell.h"
 
-/*
- *		ternary
- */
-char 	tr(char a, char b, char c)
-{
-	if (a == b)
-		return (c);
-	return (a);
-}
 
-char 	*place_zero(char *result, int i)
+int 	builtin_exit(char **cmd)
 {
-	result[i] = 0;
-	return (result);
-}
-
-int 	last_pipe(int op, int value)
-{
-	static int last;
-
-	if (op == set)
-		last = value;
-	return (last);
+	if (last_pipe(get, 0) == FALSE)
+		return (0);
+	write(1, "exit\n", 5);
+	destroy_env();
+	clear_error_buffer();
+	if (cmd[1] != 0)
+		exit(ft_atoi(cmd[1]));
+	exit(0);
 }

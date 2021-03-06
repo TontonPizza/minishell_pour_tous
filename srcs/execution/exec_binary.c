@@ -34,17 +34,15 @@ int 	search_binary_or_builtin_and_exec(char **cmd)
 	if (vo_strcmp(cmd[0], "export") == 0)
 		return (builtin_export(cmd));
 	if (vo_strcmp(cmd[0], "unset") == 0)
-		return builtin_unset(cmd);
+		return (builtin_unset(cmd));
 	if (vo_strcmp(cmd[0], "cd") == 0)
-		return (0);
-	if (vo_strcmp(cmd[0], "ls") == 0)
-		return (0);
+		return (builtin_cd(cmd));
 	if (vo_strcmp(cmd[0], "pwd") == 0)
-		return (0);
+		return (builtin_pwd());
 	if (vo_strcmp(cmd[0], "env") == 0)
 		return (builtin_env());
 	if (vo_strcmp(cmd[0], "exit") == 0)
-		return (0);
+		return (builtin_exit(cmd));
 	exec_pipe(cmd);
 	return 0;
 }

@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bullshit_functions.c                               :+:      :+:    :+:   */
+/*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vo-nguye <vo-nguye@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/64 15:35:55 by vo-nguye          #+#    #+#             */
-/*   Updated: 2021/03/64 15:35:55 by vo-nguye         ###   ########.fr       */
+/*   Created: 2021/03/65 01:13:48 by vo-nguye          #+#    #+#             */
+/*   Updated: 2021/03/65 01:13:48 by vo-nguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../minishell.h"
 
-/*
- *		ternary
- */
-char 	tr(char a, char b, char c)
+int 	builtin_cd(char **cmd)
 {
-	if (a == b)
-		return (c);
-	return (a);
+		if (chdir(cmd[1]) != 0)
+		{
+			generate_error("No such file or directory", 2);
+			return (-1);
+		}
+		return (0);
 }
 
-char 	*place_zero(char *result, int i)
+int		builtin_pwd()
 {
-	result[i] = 0;
-	return (result);
-}
+	char *pwd;
 
-int 	last_pipe(int op, int value)
-{
-	static int last;
-
-	if (op == set)
-		last = value;
-	return (last);
+	pwd = getcwd(NULL, 500);
+	ft_putendl_fd(pwd, 1);
+	free(pwd);
+	return (0);
 }
