@@ -44,12 +44,10 @@ char	*get_value_and_free_or_not(char *name, int free_name)
 {
 	t_env_var	*current;
 
-	free(get_meta_data(0)->requested_env_var);
+	free_if_not_null(get_meta_data(0)->requested_env_var);
 	current = get_meta_data(0)->env_list;
 	while (current->next && ft_strncmp(current->name, name, ft_strlen(name)) != 0)
-	{
 		current = current->next;
-	}
 	if (ft_strncmp(current->name, name, ft_strlen(name)) == 0)
 	{
 		get_meta_data(0)->requested_env_var = ft_strdup(current->value);

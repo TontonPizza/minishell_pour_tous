@@ -179,6 +179,8 @@ int 		builtin_exit(char **cmd);
 /***********************************/
 // BULLSHIT
 
+void	free_at_exit(int op, char **p1, char **p2);
+void 	free_if_not_null(void *ptr);
 int 	last_pipe(int op, int value);
 char 	*place_zero(char *result, int i);
 char 	tr(char a, char b, char c);

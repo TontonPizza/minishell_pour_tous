@@ -68,6 +68,6 @@ char 	**offset_word(char **words, int offset)
 		k++;
 	}
 	result[k] = 0;
-	free_split(words);
+//	free_split(words);
 	return (result);
 }

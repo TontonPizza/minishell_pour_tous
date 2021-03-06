@@ -54,5 +54,7 @@ void		words_to_tokens_and_offset_words(char ***words, t_token **list)
 		}
 		i++;
 	}
-	*words = offset_word((*words), i + 1);
+	tmp = *words;
+	*words = offset_word((tmp), i + 1);
+	free(tmp);
 }

@@ -148,11 +148,6 @@ int 	execution_loop(t_token *list, int source)
 	}
 	if (is_there_an_error() == FALSE)
 		search_binary_or_builtin_and_exec(export_token_to_command(list));
-	else
-	{
-		display_error();
-		clear_error_buffer();
-	}
 	close(pipe_fd[1]);
 	return execution_loop(next_command_after_pipe(list), pipe_fd[0]);
 }

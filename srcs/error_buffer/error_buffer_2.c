@@ -24,9 +24,11 @@ void 	display_error()
 	if (error_msg == 0 || ft_strlen(error_msg) == 0)
 	{
 		last_return_code(set, 0);
+		free(error_msg);
 		return ;
 	}
 	ft_putendl_fd(error_msg, g_new_stdout);
+	free(error_msg);
 	clear_error_buffer();
 }
 

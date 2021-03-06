@@ -48,7 +48,7 @@ int 	builtin_echo(char **cmd)
 		return (0);
 	if (pid == CHILD_PROCESS)
 	{
-		if (cmd[1] && vo_strcmp(cmd[1], "-n") == 0)
+		if (cmd[0] && cmd[1] && vo_strcmp(cmd[1], "-n") == 0)
 			echo_n(cmd);
 		else
 			echo_vanilla(cmd);

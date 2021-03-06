@@ -56,7 +56,10 @@ int		exec_pipe(char **cmd)
 	if (ft_strchr(cmd[0], '/') == 0)
 		path = path_to_binary(cmd[0]);
 	if (isfile(path) != 1)
+	{
+		free_split(cmd);
 		return (generate_error("Command not found", isfile(path)));
+	}
 	pid = fork();
 	if (pid < 0)
 		return (0);

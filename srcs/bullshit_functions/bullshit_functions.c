@@ -37,3 +37,29 @@ int 	last_pipe(int op, int value)
 		last = value;
 	return (last);
 }
+
+void 	free_if_not_null(void *ptr)
+{
+	if (ptr != 0)
+	{
+		free(ptr);
+		ptr = 0;
+	}
+}
+
+void	free_at_exit(int op, char **p1, char **p2)
+{
+	static char **st1;
+	static char **st2;
+
+	if (op == set)
+	{
+		st1 = p1;
+		st2 = p2;
+		return ;
+	}
+	if (st1)
+		free_split(st1);
+	if (st2)
+		free_split(st2);
+}

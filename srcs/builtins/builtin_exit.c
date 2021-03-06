@@ -20,6 +20,7 @@ int 	builtin_exit(char **cmd)
 	write(1, "exit\n", 5);
 	destroy_env();
 	clear_error_buffer();
+	free_at_exit(get, 0 ,0);
 	if (cmd[1] != 0)
 		exit(ft_atoi(cmd[1]));
 	exit(0);

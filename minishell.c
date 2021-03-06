@@ -31,6 +31,7 @@ void routine(char *line)
 	g_new_stdout = dup(1);
 	while (tool)
 	{
+		free_at_exit(set, words, tool);
 		list = 0;
 		last_pipe(set, FALSE);
 		words_to_tokens_and_offset_words(&tool, &list);
@@ -42,6 +43,8 @@ void routine(char *line)
 		if (no_empty)
 			display_error();
 	}
+	free_split(tool);
+	free_split(words);
 }
 
 int main(int argc, char **argv)
