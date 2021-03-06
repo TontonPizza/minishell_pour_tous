@@ -15,7 +15,7 @@
 char 	**split_join_string(char **split, char *word)
 {
 	char	**result;
-	int 	i;
+	int		i;
 
 	i = 0;
 	result = malloc(sizeof(char *) * (split_size(split) + 2));
@@ -34,8 +34,8 @@ char 	**split_join_string(char **split, char *word)
 
 char 	**copy_split(char **split)
 {
-	char 	**result;
-	int 	i;
+	char	**result;
+	int		i;
 
 	result = malloc(sizeof (char *) * (split_size(split) + 2));
 	if (result == 0)
@@ -53,7 +53,7 @@ char 	**offset_word(char **words, int offset)
 {
 	char	**result;
 	int		i;
-	int 	k;
+	int		k;
 
 	if (offset > split_size(words))
 		return (0);

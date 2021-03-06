@@ -16,14 +16,14 @@ char	**add_char_to_split(char **words, char *plus)
 {
 	char	**tmp;
 	int		i;
-	int 	k;
+	int		k;
 
 	k = 0;
 	i = split_size(words);
 	tmp = malloc(sizeof(char *) * i + 2);
 	if (tmp == NULL)
 		return (NULL);
-	while(words[k])
+	while (words[k])
 	{
 		tmp[k] = ft_strdup(words[k]);
 		k++;
@@ -37,7 +37,7 @@ char	**add_char_to_split(char **words, char *plus)
 
 void	print_split(char **words)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (words && words[i])
@@ -50,7 +50,7 @@ void	print_split(char **words)
 
 int 	split_size(char **words)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (words && words[i])
@@ -74,9 +74,9 @@ int 	free_split(char **words)
 
 char 	**split_join_and_free_2(char **a, char **b)
 {
-	char 	**result;
-	int 	i;
-	int 	k;
+	char		**result;
+	int			i;
+	int			k;
 
 	i = 0;
 	k = 0;

@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-int 	is_char_in_set(char c, char *set)
+int	is_char_in_set(char c, char *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (set[i])

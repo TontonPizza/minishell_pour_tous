@@ -13,9 +13,9 @@
 #include "libft.h"
 #include <unistd.h>
 
-static void		ft_display(long int i, int fd)
+static void	ft_display(long int i, int fd)
 {
-	int tmp;
+	int	tmp;
 
 	if ((i / 10) > 0)
 		ft_display((i / 10), fd);
@@ -23,7 +23,7 @@ static void		ft_display(long int i, int fd)
 	ft_putchar_fd(tmp, fd);
 }
 
-void			ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	long int		i;
 

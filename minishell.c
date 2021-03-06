@@ -12,18 +12,17 @@
 
 #include "minishell.h"
 
-void routine(char *line)
+void	routine(char *line)
 {
 	char	**words;
-	t_token *list;
-	int 	no_empty;
+	t_token	*list;
+	int		no_empty;
 
 	words = get_words_and_free(line);
 	words = fix_words(words);
 	g_new_stdout = dup(1);
 	while (words)
 	{
-
 		list = 0;
 		last_pipe(set, FALSE);
 		words_to_tokens_and_offset_words(&words, &list);
@@ -46,19 +45,15 @@ void	write_prompt(void)
 	write(g_new_stdout, ">>> ", 4);
 }
 
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
+	char	*line;
+
 	initialize_path_to_buffer();
 	init_env_list();
 	export_var("PATH", "/bin");
-
-	log_file = open("error_log.txt", O_RDWR | O_TRUNC, 0777);
-
 	signal(SIGINT, sighandler_int);
 	signal(SIGQUIT, sighandler_quit);
-
-	char *line;
 	g_new_stdin = dup(0);
 	write_prompt();
 	while (get_next_line(g_new_stdin, &line))

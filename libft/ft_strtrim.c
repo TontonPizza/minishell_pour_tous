@@ -18,7 +18,7 @@
 
 static int	ft_checktrim(char c, char const *set)
 {
-	int k;
+	int	k;
 
 	k = 0;
 	while (set[k])
@@ -30,7 +30,7 @@ static int	ft_checktrim(char c, char const *set)
 	return (0);
 }
 
-char 		*trim_and_free(char *s1, char *set)
+char	*trim_and_free(char *s1, char *set)
 {
 	char	*res;
 	int		begin;
@@ -53,8 +53,7 @@ char 		*trim_and_free(char *s1, char *set)
 	return (res);
 }
 
-
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*res;
 	int		begin;

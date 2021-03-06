@@ -12,7 +12,7 @@
 
 #include "../../minishell.h"
 
-int 	echo_n(char **cmd)
+int	echo_n(char **cmd)
 {
 	int		i;
 
@@ -28,9 +28,9 @@ int 	echo_n(char **cmd)
 	return (0);
 }
 
-int echo_vanilla(char **cmd)
+int	echo_vanilla(char **cmd)
 {
-	int 	i;
+	int	i;
 
 	i = 1;
 	while (cmd[i])
@@ -44,8 +44,7 @@ int echo_vanilla(char **cmd)
 	return (0);
 }
 
-
-int 	builtin_echo(char **cmd)
+int	builtin_echo(char **cmd)
 {
 	if (cmd[0] && cmd[1] && vo_strcmp(cmd[1], "-n") == 0)
 		echo_n(cmd);
@@ -54,4 +53,3 @@ int 	builtin_echo(char **cmd)
 	free_split(cmd);
 	return (0);
 }
-

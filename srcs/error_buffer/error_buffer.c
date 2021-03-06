@@ -39,7 +39,7 @@ char	*get_buffer_content(void)
 
 char	*path_to_buffer(int op)
 {
-	static char error_path[300];
+	static char	error_path[300];
 
 	if (op == set)
 	{
@@ -53,8 +53,7 @@ char	*path_to_buffer(int op)
 	return (NULL);
 }
 
-
-int		generate_error(char *message, int error_code)
+int	generate_error(char *message, int error_code)
 {
 	if (last_return_code(get, 0) == 0 && error_code != IGNORE_ERROR)
 	{
@@ -66,7 +65,7 @@ int		generate_error(char *message, int error_code)
 
 int	is_there_an_error(void)
 {
-	char 	*str;
+	char	*str;
 
 	str = get_buffer_content();
 	if (str == 0 || ft_strlen(str) == 0)
@@ -78,9 +77,9 @@ int	is_there_an_error(void)
 	return (TRUE);
 }
 
-int initialize_path_to_buffer(void)
+int	initialize_path_to_buffer(void)
 {
-	int fd;
+	int	fd;
 
 	fd = open(path_to_buffer(set), O_TRUNC | O_RDWR);
 	if (fd < 0)

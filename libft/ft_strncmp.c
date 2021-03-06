@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-int 			vo_strcmp(char *name, char *value)
+int	vo_strcmp(char *name, char *value)
 {
 	if (ft_strlen(name) != ft_strlen(value))
 		return (-1);
 	return (ft_strncmp(name, value, ft_strlen(name)));
 }
 
-int				ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 	int		result;

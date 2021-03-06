@@ -23,6 +23,5 @@ int 	last_return_code(int op, int value)
 
 	if (op == set)
 		last_return_code = value;
-
-	return last_return_code;
+	return (last_return_code);
 }

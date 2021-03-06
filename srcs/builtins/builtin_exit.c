@@ -12,7 +12,6 @@
 
 #include "../../minishell.h"
 
-
 int 	builtin_exit(char **cmd)
 {
 	if (last_pipe(get, 0) == FALSE)
@@ -20,7 +19,7 @@ int 	builtin_exit(char **cmd)
 	write(1, "exit\n", 5);
 	destroy_env();
 	clear_error_buffer();
-	free_at_exit(get, 0 ,0);
+	free_at_exit(get, 0, 0);
 	free_split(cmd);
 	if (cmd[1] != 0)
 		exit(ft_atoi(cmd[1]));

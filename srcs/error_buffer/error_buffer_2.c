@@ -14,12 +14,13 @@
 
 void 	set_error_num_according_to_msg(char *msg)
 {
-
+	return ;
 }
 
-void 	display_error()
+void 	display_error(void)
 {
-	char *error_msg;
+	char	*error_msg;
+
 	error_msg = get_buffer_content();
 	if (error_msg == 0 || ft_strlen(error_msg) == 0)
 	{
@@ -32,9 +33,9 @@ void 	display_error()
 	clear_error_buffer();
 }
 
-int		clear_error_buffer(void)
+int	clear_error_buffer(void)
 {
-	int fd;
+	int	fd;
 
 	fd = open(path_to_buffer(get), O_TRUNC);
 	if (fd < 0)

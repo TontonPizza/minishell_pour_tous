@@ -12,18 +12,18 @@
 
 #include "../../minishell.h"
 
-char		*path_to_binary(char *word)
+char	*path_to_binary(char *word)
 {
-	char	*path;
-	char	**split_path;
-	struct	stat stat_p;
-	int		i;
+	char			*path;
+	char			**split_path;
+	struct stat		stat_p;
+	int				i;
 
 	path = get_value_and_free_or_not("PATH", 0);
 	split_path = ft_split(path, ':');
 	free(path);
 	path = NULL;
-	i  = 0;
+	i = 0;
 	while (split_path[i])
 	{
 		split_path[i] = ft_strjoin_and_free(split_path[i], "/");

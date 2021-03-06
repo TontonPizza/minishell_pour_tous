@@ -12,13 +12,23 @@
 
 #include "../../minishell.h"
 
-int ptr_p(int *ptr, int i)
+int	ptr_p(int *ptr, int i)
 {
 	*ptr += i;
 	return (1);
 }
 
-int 	define_redirect(int red, char c)
+void 	free_if_not_null(void *ptr)
+{
+	return ;
+	if (ptr != 0)
+	{
+		free(ptr);
+		ptr = 0;
+	}
+}
+
+int	define_redirect(int red, char c)
 {
 	if (c == '>')
 		return (1);
@@ -30,14 +40,14 @@ int 	define_redirect(int red, char c)
 char	**fix_words(char **words)
 {
 	char	**result;
-	int 	i;
-	int 	redirect;
+	int		i;
+	int		redirect;
 
 	result = x_malloc(sizeof(char *));
 	result[0] = 0;
 	redirect = 0;
 	i = 0;
-	while(words[i])
+	while (words[i])
 	{
 		redirect = define_redirect(redirect, words[i][0]);
 		if (words[i][0] == ';' && redirect == 1)

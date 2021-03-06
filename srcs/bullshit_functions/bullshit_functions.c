@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../minishell.h"
 
 int 	has_out(t_token *list)
@@ -39,27 +38,17 @@ char 	*place_zero(char *result, int i)
 
 int 	last_pipe(int op, int value)
 {
-	static int last;
+	static int	last;
 
 	if (op == set)
 		last = value;
 	return (last);
 }
 
-void 	free_if_not_null(void *ptr)
-{
-	return ;
-	if (ptr != 0)
-	{
-		free(ptr);
-		ptr = 0;
-	}
-}
-
 void	free_at_exit(int op, char **p1, t_token *p2)
 {
-	static char **st1;
-	static t_token *st2;
+	static char		**st1;
+	static t_token	*st2;
 
 	if (op == set)
 	{

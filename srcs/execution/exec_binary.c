@@ -12,13 +12,11 @@
 
 #include "../../minishell.h"
 
-/*
- * does file exist and is executable
- */
-int		isfile(char *path)
+int	isfile(char *path)
 {
-	struct stat sb;
-	int		i;
+	struct stat	sb;
+	int			i;
+
 	i = 0;
 	if (stat(path, &sb) == 0 && sb.st_mode & S_IXUSR)
 		return (1);
@@ -27,7 +25,7 @@ int		isfile(char *path)
 	return (127);
 }
 
-int 	search_binary_or_builtin_and_exec(char **cmd)
+int	search_binary_or_builtin_and_exec(char **cmd)
 {
 	if (vo_strcmp(cmd[0], "ignore") == 0)
 		return (0);
@@ -46,13 +44,13 @@ int 	search_binary_or_builtin_and_exec(char **cmd)
 	if (vo_strcmp(cmd[0], "exit") == 0)
 		return (builtin_exit(cmd));
 	exec_pipe(cmd);
-	return 0;
+	return (0);
 }
 
-int		exec_pipe(char **cmd)
+int	exec_pipe(char **cmd)
 {
-	pid_t pid;
-	char *path;
+	pid_t	pid;
+	char	*path;
 
 	path = cmd[0];
 	if (ft_strchr(cmd[0], '/') == 0)

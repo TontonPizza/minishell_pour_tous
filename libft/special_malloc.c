@@ -12,8 +12,7 @@
 
 #include "libft.h"
 
-
-int		special_malloc(void *item, int size, int count)
+int	special_malloc(void *item, int size, int count)
 {
 	item = malloc(size * count);
 	if (item == 0)

@@ -15,7 +15,7 @@
 int 	builtin_env(char **cmd)
 {
 	char	**env_array;
-	int 	i;
+	int		i;
 
 	i = 0;
 	env_array = get_env_as_array();

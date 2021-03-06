@@ -35,7 +35,7 @@ static char	*ft_swap(char *s)
 	return (s);
 }
 
-char		*ft_itoa(long int n)
+char	*ft_itoa(long int n)
 {
 	char		*res;
 	long int	i;
@@ -64,7 +64,7 @@ char		*ft_itoa(long int n)
 	return (ft_swap(res));
 }
 
-char		*vo_itoa(long int n)
+char	*vo_itoa(long int n)
 {
 	char		*res;
 	long int	i;

@@ -12,9 +12,10 @@
 
 #include "libft.h"
 
-void 	*x_malloc(int size)
+void	*x_malloc(int size)
 {
-	void *ptr;
+	void	*ptr;
+
 	ptr = malloc(size);
 	if (ptr == 0)
 	{

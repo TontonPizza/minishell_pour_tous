@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char		*join_char_and_free(char *str, char c)
+char	*join_char_and_free(char *str, char c)
 {
 	int		i;
 	char	*result;
@@ -30,13 +30,14 @@ char		*join_char_and_free(char *str, char c)
 	return (result);
 }
 
-char		*char_join_and_free(char *str, char c)
+char	*char_join_and_free(char *str, char c)
 {
 	int		i;
 	char	*result;
 
 	i = 0;
-	if (!(result = malloc(sizeof(char) * (ft_strlen(str) + 2))))
+	result = malloc(sizeof(char) * (ft_strlen(str) + 2));
+	if (result == NULL)
 	{
 		free(str);
 		return (NULL);
@@ -52,13 +53,14 @@ char		*char_join_and_free(char *str, char c)
 	return (result);
 }
 
-char		*ft_strjoin_and_free(char *t1, char *t2)
+char	*ft_strjoin_and_free(char *t1, char *t2)
 {
 	char		*result;
 	int			i;
 	int			k;
 
-	if (!(result = malloc(sizeof(char) * (ft_strlen(t1) + ft_strlen(t2) + 1))))
+	result = malloc(sizeof(char) * (ft_strlen(t1) + ft_strlen(t2) + 1));
+	if (result == NULL)
 	{
 		free(t1);
 		return (NULL);

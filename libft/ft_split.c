@@ -16,7 +16,7 @@
 
 #include "libft.h"
 
-static int		ft_nbrsubstr(const char *s, char c)
+static int	ft_nbrsubstr(const char *s, char c)
 {
 	unsigned int	i;
 	int				count;
@@ -35,14 +35,14 @@ static int		ft_nbrsubstr(const char *s, char c)
 	return (count);
 }
 
-static char		**ft_special_case(char **res, const char *s)
+static char	**ft_special_case(char **res, const char *s)
 {
 	res[0] = ft_strdup(s);
 	res[1] = 0;
 	return (res);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**res;
 	int		start;
@@ -52,8 +52,7 @@ char			**ft_split(char const *s, char c)
 	start = 0;
 	end = 0;
 	i_tab = 0;
-	if (!(res = (char **)malloc(sizeof(char *) * (ft_nbrsubstr(s, c) + 1))))
-		return (0);
+	res = (char **)x_malloc(sizeof(char *) * (ft_nbrsubstr(s, c) + 1))));
 	while (i_tab != ft_nbrsubstr(s, c))
 	{
 		while (s[start] == c)

@@ -14,7 +14,7 @@
 
 int 	is_argument_valid(char *word)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (word[i])
@@ -28,16 +28,16 @@ int 	is_argument_valid(char *word)
 
 int 	export_word(char *word)
 {
-	char 	*name;
-	char 	*var;
-	int 	i;
+	char	*name;
+	char	*var;
+	int		i;
 
 	name = ft_strdup(word);
 	var = ft_strdup("");
 	i = 0;
 	while (word[i] && word[i] != '+' && word[i] != '=')
 		i++;
-	name[i]=0;
+	name[i] = 0;
 	if (word[i] == '+')
 	{
 		free(var);
@@ -55,8 +55,7 @@ int 	export_word(char *word)
 
 int 	builtin_export(char **cmd)
 {
-	int 	i;
-	int 	k;
+	int		i;
 
 	i = 1;
 	while (cmd[i])
@@ -73,14 +72,14 @@ int 	builtin_export(char **cmd)
 
 int 	builtin_unset(char **cmd)
 {
-		int 	i;
+	int	i;
 
-		i = 1;
-		while (cmd[i])
-		{
-			unset_env(cmd[i]);
-			i++;
-		}
-		free_split(cmd);
-		return (0);
+	i = 1;
+	while (cmd[i])
+	{
+		unset_env(cmd[i]);
+		i++;
+	}
+	free_split(cmd);
+	return (0);
 }
