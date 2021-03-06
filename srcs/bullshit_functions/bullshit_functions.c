@@ -40,6 +40,7 @@ int 	last_pipe(int op, int value)
 
 void 	free_if_not_null(void *ptr)
 {
+	return ;
 	if (ptr != 0)
 	{
 		free(ptr);

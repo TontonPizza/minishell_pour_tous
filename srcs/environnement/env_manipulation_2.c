@@ -39,7 +39,7 @@ t_env_data	*get_meta_data(int first_call)
 		metadata.env_list->name = ft_strdup("author");
 		metadata.env_list->value = ft_strdup("vo-nguye");
 		metadata.env_list->next = 0;
-		metadata.requested_env_var = ft_strdup("");
+		metadata.requested_env_var = 0;
 		metadata.all_env_as_array = ft_split("yolo yolo", ' ');
 	}
 	return (&metadata);

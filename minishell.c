@@ -43,8 +43,6 @@ void routine(char *line)
 		if (no_empty)
 			display_error();
 	}
-	free_split(tool);
-	free_split(words);
 }
 
 int main(int argc, char **argv)
