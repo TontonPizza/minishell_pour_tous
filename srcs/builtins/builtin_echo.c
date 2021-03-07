@@ -47,7 +47,7 @@ int	echo_vanilla(char **cmd)
 
 int	builtin_echo(char **cmd)
 {
-	if (cmd[0] && cmd[1] && vo_strcmp(cmd[1], "-n") == 0)
+	if (cmd[0] && cmd[1] && ft_strncmp(cmd[1], "-n", 2) == 0)
 		echo_n(cmd);
 	else
 		echo_vanilla(cmd);

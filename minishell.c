@@ -64,10 +64,12 @@ int	main(int argc, char **argv)
 		if (ft_strlen(line) > 0)
 			routine(line);
 		if (exit_code(get, 0) >= 0)
-			break;
+			break ;
 		write_prompt();
 	}
 	write(g_new_stdout, "exit\n", 5);
+	if (exit_code(get, 0) == 214)
+		write(g_new_stdout, "trop d'arguments\n", 17);
 	destroy_env();
 	clear_error_buffer();
 	return (exit_code(get, 0));
