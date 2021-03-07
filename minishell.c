@@ -21,6 +21,7 @@ void	routine(char *line)
 	words = get_words_and_free(line);
 	words = fix_words(words);
 	g_new_stdout = dup(1);
+	get_pid(set, -1);
 	while (words)
 	{
 		list = 0;
@@ -55,6 +56,7 @@ int	main(int argc, char **argv)
 	signal(SIGINT, sighandler_int);
 	signal(SIGQUIT, sighandler_quit);
 	g_in(set, dup(0));
+	get_pid(set, -1);
 	write_prompt();
 	while (get_next_line(g_in(get, 0), &line))
 	{

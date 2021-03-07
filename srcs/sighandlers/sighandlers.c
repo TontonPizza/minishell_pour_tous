@@ -12,6 +12,15 @@
 
 #include "../../minishell.h"
 
+int		get_pid(int op, int val)
+{
+	static int pid;
+
+	if(op == set)
+		pid = val;
+	return (pid);
+}
+
 void	sighandler_int(int signum)
 {
 	last_return_code(set, 128 + signum);
@@ -21,7 +30,9 @@ void	sighandler_int(int signum)
 
 void	sighandler_quit(int signum)
 {
+	if (get_pid(get, 0) < 0)
+		return;
 	last_return_code(set, 128 + signum);
-	write(g_new_stdout, "exit\n", 6);
+	write(1, "exit (core dumped)\n", ft_strlen("exit (core dumped)\n"));
 	exit(0);
 }

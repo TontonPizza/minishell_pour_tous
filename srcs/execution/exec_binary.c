@@ -61,7 +61,7 @@ int	exec_pipe(char **cmd)
 		return (generate_error("Command not found", isfile(path)));
 	}
 	pid = fork();
-	if (pid < 0)
+	if (get_pid(set, 10) && pid < 0)
 		return (0);
 	if (pid == CHILD_PROCESS)
 	{
