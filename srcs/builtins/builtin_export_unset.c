@@ -53,11 +53,29 @@ int 	export_word(char *word)
 	return (0);
 }
 
+int 	empty_export()
+{
+	char	**env_array;
+	int		i;
+
+	i = 0;
+	env_array = get_env_as_array();
+	while (env_array && env_array[i])
+	{
+		ft_putstr_fd("declare -x ", 1);
+		ft_putendl_fd(env_array[i], 1);
+		i++;
+	}
+	return (0);
+}
+
 int 	builtin_export(char **cmd)
 {
 	int		i;
 
 	i = 1;
+	if (split_size(cmd) == 1)
+		return (empty_export());
 	while (cmd[i])
 	{
 		if (is_argument_valid(cmd[i]))

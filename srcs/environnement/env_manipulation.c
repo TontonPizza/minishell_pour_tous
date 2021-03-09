@@ -84,9 +84,7 @@ void	export_var(char *name, char *value)
 
 	current = get_meta_data(0)->env_list;
 	while (current && current->next && vo_strcmp(name, current->name) != 0)
-	{
 		current = current->next;
-	}
 	if (vo_strcmp(name, current->name) != 0)
 	{
 		item = malloc(sizeof(t_env_var));
