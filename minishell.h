@@ -111,6 +111,7 @@ int		g_new_stdout;
 int		g_out(int op, int val);
 int		g_in(int op, int val);
 int		g_err(int op, int val);
+void 	init_all();
 // ENV MANIPULATION
 
 void		init_env_list(void);
@@ -187,7 +188,7 @@ int 		exit_code(int op, int val);
 
 // SIGNALS
 void 		custom_msg_exit_code(int code);
-
+int 		get_quit_flag(int op, int val);
 void		sighandler_int(int signum);
 void		sighandler_quit(int signum);
 

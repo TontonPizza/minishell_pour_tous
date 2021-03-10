@@ -16,7 +16,7 @@ void custom_msg_exit_code(int code)
 {
 	if (code == 214)
 		write(g_new_stdout, " trop d'arguments", 17);
-	if (code == 131)
+	if (code == 131 && get_quit_flag(get, 0) == 1)
 		write(g_new_stdout, " (core dumped)", 14);
 	write(g_new_stdout, "\n", 1);
 }
@@ -37,6 +37,15 @@ void	sighandler_int(int signum)
 	write_prompt();
 }
 
+int 	get_quit_flag(int op, int val)
+{
+	static int pid;
+
+	if(op == set)
+		pid = val;
+	return (pid);
+}
+
 void	sighandler_quit(int signum)
 {
 	if (get_pid(get, 0) < 0)
@@ -44,5 +53,6 @@ void	sighandler_quit(int signum)
 		write(g_new_stdout, "\b\b  \b\b", 6);
 		return;
 	}
+	get_quit_flag(set, 1);
 	exit_code(set, 131);
 }

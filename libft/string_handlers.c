@@ -53,6 +53,15 @@ char	*char_join_and_free(char *str, char c)
 	return (result);
 }
 
+char	*strjoin_free_2(char *t1, char *t2)
+{
+	char	*result;
+
+	result = ft_strjoin_and_free(t1, t2);
+	free(t2);
+	return (result);
+}
+
 char	*ft_strjoin_and_free(char *t1, char *t2)
 {
 	char		*result;
