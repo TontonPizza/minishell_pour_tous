@@ -36,5 +36,6 @@ char	*path_to_binary(char *word)
 	free(split_path);
 	if (stat(path, &stat_p) == 0)
 		return (path);
+	free(path);
 	return (NULL);
 }

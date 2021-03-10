@@ -19,18 +19,10 @@
     <list default="true" id="f7591a6f-2ef6-4b92-898e-b984b4d90297" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minishell.c" beforeDir="false" afterPath="$PROJECT_DIR$/minishell.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/minishell.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/builtins/builtin_echo.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/builtins/builtin_echo.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/builtins/builtin_env.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/builtins/builtin_env.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/builtins/builtin_export_unset.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/builtins/builtin_export_unset.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/bullshit_functions/bullshit_functions_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/bullshit_functions/bullshit_functions_2.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/bullshit_functions/bullshit_functions_3.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/error_buffer/error_buffer_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/error_buffer/error_buffer_2.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/global/global.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/global/global.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parsing/lexer_3.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parsing/lexer_3.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/sighandlers/sighandlers.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/sighandlers/sighandlers.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/builtins/builtin_cd.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/builtins/builtin_cd.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/builtins/path_to_binary.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/builtins/path_to_binary.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/execution/exec_binary.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/execution/exec_binary.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/minishell.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/minishell.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +71,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/headers" />
+      <recent name="$PROJECT_DIR$/srcs" />
       <recent name="$PROJECT_DIR$/srcs/bullshit_functions" />
       <recent name="$PROJECT_DIR$/srcs/builtins" />
     </key>
@@ -137,7 +131,7 @@
       <workItem from="1614866267214" duration="11229000" />
       <workItem from="1614972662762" duration="39568000" />
       <workItem from="1615070971339" duration="8920000" />
-      <workItem from="1615295814174" duration="20615000" />
+      <workItem from="1615295814174" duration="22951000" />
     </task>
     <servers />
   </component>

@@ -47,6 +47,12 @@ int	search_binary_or_builtin_and_exec(char **cmd)
 	return (0);
 }
 
+int 	free_int(char *p)
+{
+	free(p);
+	return (0);
+}
+
 int	exec_pipe(char **cmd)
 {
 	pid_t	pid;
@@ -57,8 +63,8 @@ int	exec_pipe(char **cmd)
 		path = path_to_binary(cmd[0]);
 	if (isfile(path) != 1)
 	{
-		free_split(cmd);
-		return (generate_error("Command not found", isfile(path)));
+		generate_error("Command not found", isfile(path));
+		return (free_split(cmd) + free_int(path));
 	}
 	pid = fork();
 	if (get_pid(set, 10) && pid < 0)
@@ -73,5 +79,5 @@ int	exec_pipe(char **cmd)
 	}
 	waitpid(0, 0, 0);
 	free_split(cmd);
-	return (0);
+	return (free_int(path));
 }

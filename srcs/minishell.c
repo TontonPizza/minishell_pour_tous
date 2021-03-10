@@ -75,6 +75,7 @@ int	main(int argc, char **argv)
 		write_prompt();
 	}
 	write(g_new_stdout, "exit", 5);
+	free(line);
 	custom_msg_exit_code(exit_code(get, 0));
 	destroy_env();
 	clear_error_buffer();

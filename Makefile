@@ -50,5 +50,5 @@ $(NAME): $(SRCS) headers/minishell.h Makefile
 		clang $(SRCS) ./libft/libft.a -o minishell
 
 
-clear:	$(NAME)
-		clear
+check:	$(NAME)
+		valgrind --leak-check=full ./$(NAME)
