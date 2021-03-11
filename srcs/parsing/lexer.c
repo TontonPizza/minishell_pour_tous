@@ -45,7 +45,7 @@ char	*get_next_word(char *text, int *cursor, int i)
 		{
 			sep = text[i];
 			new_text = join_char_and_free(new_text, text[i++]);
-			while (text[i] && text[i] != sep && i < ft_strlen(text))
+			while (text[i] && text[i] != sep && i < (int)ft_strlen(text))
 			{
 				if (text[i] == '\\' && text[i + 1] == '"' && sep == '"')
 					new_text = join_char_and_free(new_text, text[i++]);
@@ -68,7 +68,7 @@ char	**get_words(char *line)
 	result[0] = 0;
 	cursor = 0;
 	word_count = 0;
-	while (cursor < ft_strlen(line))
+	while (cursor < (int)ft_strlen(line))
 	{
 		result[word_count] = get_next_word(line + cursor, &cursor, 0);
 		word_count++;

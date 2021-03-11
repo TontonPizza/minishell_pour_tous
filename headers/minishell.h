@@ -56,6 +56,10 @@
 #  define LORIE "Xx_Lorie4ever69@$_xX"
 # endif
 
+# ifndef PROMPT
+#  define PROMPT ">>> "
+# endif
+
 enum e_error_type
 {
 	CODE_OK,
@@ -116,7 +120,7 @@ int			g_err(int op, int val);
 
 void		init_env_list(void);
 void		destroy_env(void);
-
+void		import_all_env(char **env);
 char		**get_env_as_array(void);
 char		*get_value_and_free_or_not(char *name, int free_or_not);
 int			env_var_count(void);

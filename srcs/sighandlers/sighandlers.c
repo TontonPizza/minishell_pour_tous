@@ -53,6 +53,7 @@ void	sighandler_quit(int signum)
 		write(g_new_stdout, "\b\b  \b\b", 6);
 		return ;
 	}
+	(void)signum;
 	get_quit_flag(set, 1);
 	exit_code(set, 131);
 }

@@ -47,7 +47,7 @@ re: fclean all
 					make clean -C ./libft
 
 $(NAME): $(SRCS) headers/minishell.h Makefile
-		clang $(SRCS) ./libft/libft.a -o minishell
+		clang -Wall -Wextra -Werror $(SRCS) ./libft/libft.a -o minishell
 
 
 check:	$(NAME)

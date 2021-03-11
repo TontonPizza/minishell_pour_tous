@@ -42,7 +42,6 @@ char	*next_split(char *word, char **result)
 char 	**word_split(char *word)
 {
 	char	**result;
-	char	*ptr;
 	int		i;
 
 	i = 0;

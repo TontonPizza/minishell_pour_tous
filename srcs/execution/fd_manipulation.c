@@ -43,7 +43,7 @@ int 	source_fd(int source, t_token *list)
 	return (last_fd);
 }
 
-int 	dest_fd(int pipe_fd, t_token *list)
-{
-	return (0);
-}
+//int 	dest_fd(int pipe_fd, t_token *list)
+//{
+//	return (0);
+//}

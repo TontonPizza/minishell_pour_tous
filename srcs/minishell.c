@@ -37,12 +37,26 @@ void	routine(char *line)
 		if (no_empty)
 			display_error();
 	}
+	get_pid(set, -1);
 	free_split(words);
 }
 
 void	write_prompt(void)
 {
-	write(g_new_stdout, ">>> ", 4);
+	char	*path;
+	char	*user;
+	char	**split;
+
+	user = get_value_and_free_or_not("USER", 0);
+	path = getcwd(NULL, 500);
+	split = ft_split(path, '/');
+	ft_putstr_fd(user, g_new_stdout);
+	ft_putchar_fd('~', g_new_stdout);
+	ft_putstr_fd(split[split_size(split) - 1], g_new_stdout);
+	write(g_new_stdout, PROMPT, ft_strlen(PROMPT));
+	free(path);
+	free(user);
+	free_split(split);
 }
 
 void 	init_all(void)
@@ -50,8 +64,8 @@ void 	init_all(void)
 	initialize_path_to_buffer();
 	init_env_list();
 	get_quit_flag(set, 0);
-	export_var("PATH", "/bin:/usr/bin");
-	export_var("TERM", "xterm-256color");
+//	export_var("PATH", "/bin:/usr/bin");
+//	export_var("TERM", "xterm-256color");
 	signal(SIGINT, sighandler_int);
 	signal(SIGQUIT, sighandler_quit);
 	g_in(set, dup(0));
@@ -59,11 +73,12 @@ void 	init_all(void)
 	exit_code(set, -1);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
 	char	*line;
 
 	init_all();
+	import_all_env(envp);
 	write_prompt();
 	line = 0;
 	while (get_next_line(g_in(get, 0), &line) > 0 && exit_code(get, 0) < 0)
@@ -80,5 +95,6 @@ int	main(int argc, char **argv)
 	custom_msg_exit_code(exit_code(get, 0));
 	destroy_env();
 	clear_error_buffer();
+	argc = argv[0][0];
 	return (exit_code(get, 0));
 }
