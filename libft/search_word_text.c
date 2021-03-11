@@ -25,9 +25,8 @@ int	search_word(char *text, char *word)
 	{
 		if (ft_strncmp(word, list[i], ft_strlen(word)) == 0)
 			found = 1;
-		free(list[i]);
 		i++;
 	}
-	free(list);
+	free_split(list);
 	return (found);
 }

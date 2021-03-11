@@ -18,7 +18,8 @@ int	isfile(char *path)
 	int			i;
 
 	i = 0;
-	if (stat(path, &sb) == 0 && sb.st_mode & S_IXUSR)
+	if (stat(path, &sb) == 0 && sb.st_mode & S_IXUSR
+		&& (sb.st_mode & S_IFDIR) == 0)
 		return (1);
 	if (stat(path, &sb) == 0 && sb.st_mode & S_IFREG)
 		return (126);
@@ -58,12 +59,12 @@ int	exec_pipe(char **cmd)
 	pid_t	pid;
 	char	*path;
 
-	path = cmd[0];
-	if (ft_strchr(cmd[0], '/') == 0)
+	path = ft_strdup(cmd[0]);
+	if (ft_strchr(cmd[0], '/') == 0 && free_int(path) == 0)
 		path = path_to_binary(cmd[0]);
 	if (isfile(path) != 1)
 	{
-		generate_error("Command not found", isfile(path));
+		generate_error("command not found", isfile(path));
 		return (free_split(cmd) + free_int(path));
 	}
 	pid = fork();

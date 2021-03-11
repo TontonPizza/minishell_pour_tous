@@ -16,7 +16,6 @@ int	check_conformity(t_token *list)
 {
 	t_token	*cursor;
 	int		type;
-	char	*msg;
 
 	cursor = list;
 	while (cursor)

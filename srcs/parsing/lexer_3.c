@@ -75,7 +75,7 @@ char 	*expand_backslash_and_parameters(char *word)
 	return (result);
 }
 
-char	*expand_backslash_and_parameters_0(char *word)
+char	*expand_backslash_and_parameters_x(char *word)
 {
 	char	*res;
 	int		i;

@@ -1,2 +1,0 @@
-/home/user42/Documents/minishell/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/user42/Documents/minishell/cmake-build-debug/CMakeFiles/edit_cache.dir

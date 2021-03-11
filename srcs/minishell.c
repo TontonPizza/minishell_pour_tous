@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 	init_all();
 	write_prompt();
 	line = 0;
-	while (get_next_line(g_in(get, 0), &line) && exit_code(get, 0) < 0)
+	while (get_next_line(g_in(get, 0), &line) > 0 && exit_code(get, 0) < 0)
 	{
 		if (ft_strlen(line) > 0)
 			routine(line);
@@ -74,8 +74,9 @@ int	main(int argc, char **argv)
 			break ;
 		write_prompt();
 	}
+	if (exit_code(get, 0) < 0)
+		free(line);
 	write(g_new_stdout, "exit", 5);
-	free(line);
 	custom_msg_exit_code(exit_code(get, 0));
 	destroy_env();
 	clear_error_buffer();

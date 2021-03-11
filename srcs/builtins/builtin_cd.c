@@ -20,8 +20,8 @@ void 	export_var_free(char *name, char *value)
 
 int 	builtin_cd(char **cmd)
 {
-	char 	**split;
-	int 	i;
+	char	**split;
+	int		i;
 
 	i = 0;
 	if (cmd[1] == 0)

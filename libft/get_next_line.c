@@ -96,14 +96,14 @@ int				init_and_error(int fd, char **line, char *buffer)
 	return (0);
 }
 
-int				get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **l)
 {
 	static char		remains[256][BUFFER_SIZE + 2];
-	char			buffer[BUFFER_SIZE + 1];
+	char			bf[BUFFER_SIZE + 1];
 	int				i;
 	int				k;
 
-	if (init_and_error(fd, line, buffer) == -1)
+	if (init_and_error(fd, l, bf) == -1)
 		return (-1);
 	if (remains[fd][BUFFER_SIZE + 1] != 42)
 	{
@@ -111,14 +111,14 @@ int				get_next_line(int fd, char **line)
 		remains[fd][BUFFER_SIZE + 1] = 42;
 	}
 	else
-		*line = join_and_free(*line, remains[fd]);
-	while ((has_n(*line, 0) == -1) && ((i = read(fd, buffer, 1)) > 0 || (line && *line[0])))
+		*l = join_and_free(*l, remains[fd]);
+	while ((has_n(*l, 0) == -1) && ((i = read(fd, bf, 1)) > 0 || (l && *l[0])))
 	{
-		buffer[i] = 0;
-		*line = join_and_free(*line, buffer);
+		bf[i] = 0;
+		*l = join_and_free(*l, bf);
 	}
-	k = has_n(*line, 0);
-	set_zero_and_remains(*line, remains[fd]);
+	k = has_n(*l, 0);
+	set_zero_and_remains(*l, remains[fd]);
 	if (k == -1 || fd == -1 || i == -1)
 		remains[fd][BUFFER_SIZE + 1] = 0;
 	return ((i == -1 || fd == -1) ? -1 : k != -1);
