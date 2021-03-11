@@ -14,8 +14,8 @@
 
 char 	*path_to_curl(int op, char *val)
 {
-	static char path[500];
-	int 		i;
+	static char	path[500];
+	int			i;
 
 	i = 0;
 	if (op == set)
@@ -31,9 +31,9 @@ char 	*path_to_curl(int op, char *val)
 	return (ft_strdup(path));
 }
 
-void init_doge(void)
+void	init_doge(void)
 {
-	char 	*path;
+	char	*path;
 
 	path = path_to_binary("curl");
 	path_to_curl(set, path);
