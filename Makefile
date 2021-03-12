@@ -8,7 +8,7 @@ SRCS	=	./srcs/minishell.c \
 			./srcs/environnement/last_return_code.c \
 			./srcs/parsing/lexer.c\
 			./srcs/parsing/lexer_2.c\
-			./srcs/parsing/lexer_3.c\
+			./srcs/parsing/expander_3.c\
 			./srcs/parsing/tokenizer.c\
 			./srcs/parsing/expander.c\
 			./srcs/parsing/expander_2.c\

@@ -48,34 +48,6 @@ char 	*expand_env_variable(char *word, int *cursor)
 	return (get_value_and_free_or_not(result, 1));
 }
 
-char	*expand_backslash_and_parameters__(char *word)
-{
-	char	*res;
-	int		i;
-	int		mode;
-
-	i = 0;
-	mode = -1;
-	res = 0;
-	while (word[i])
-	{
-		if (word[i] == '\'')
-			mode *= -1;
-		if (word[i] == '\\' && mode < 0
-			&& is_char_in_set(word[i + 1], "\\\"$") == 1 && ++i)
-			res = join_char_and_free(res, word[i++]);
-		else if (word[i] == '$' && mode == -1)
-			res = ft_strjoin_and_free(res, expand_env_variable(word, &i));
-		else if (word[i] == '"' && ++i)
-			res = join_char_and_free(res, DOUBLE_QUOTE);
-		else if (word[i] == '\'' && ++i)
-			res = join_char_and_free(res, SIMPLE_QUOTE);
-		else
-			res = join_char_and_free(res, word[i++]);
-	}
-	return (res);
-}
-
 char 	*remove_quote(char *word)
 {
 	char	*result;

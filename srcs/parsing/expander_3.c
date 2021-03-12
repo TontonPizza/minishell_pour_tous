@@ -48,6 +48,23 @@ char 	*copy_to_double(char *word, int *index)
 	return (result);
 }
 
+char 	*join_char_code(char *str, char c)
+{
+	char	k;
+
+	k = c;
+	if (c == ';')
+		k = SEMI_COLON;
+	if (c == '<')
+		k = ARROW_LEFT;
+	if (c == '>')
+		k = ARROW_LEFT;
+	if (c == '|')
+		k = PIPE_CHAR;
+	return (join_char_and_free(str, k));
+
+}
+
 char 	*expand_backslash_and_parameters(char *word)
 {
 	char	*result;
@@ -73,32 +90,4 @@ char 	*expand_backslash_and_parameters(char *word)
 			result = join_char_and_free(result, word[i++]);
 	}
 	return (result);
-}
-
-char	*expand_backslash_and_parameters_x(char *word)
-{
-	char	*res;
-	int		i;
-	int		mode;
-
-	i = 0;
-	mode = -1;
-	res = 0;
-	while (word[i])
-	{
-		if (word[i] == '\'')
-			mode *= -1;
-		if (word[i] == '\\' && mode < 0
-			&& is_char_in_set(word[i + 1], "\\\"$") == 1 && ++i)
-			res = join_char_and_free(res, word[i++]);
-		else if (word[i] == '$' && mode == -1)
-			res = strjoin_free_2(res, expand_env_variable(word, &i));
-		else if (word[i] == '"' && ++i)
-			res = join_char_and_free(res, DOUBLE_QUOTE);
-		else if (word[i] == '\'' && ++i)
-			res = join_char_and_free(res, SIMPLE_QUOTE);
-		else
-			res = join_char_and_free(res, word[i++]);
-	}
-	return (res);
 }

@@ -48,6 +48,22 @@
 #  define DOUBLE_QUOTE 12
 # endif
 
+# ifndef SEMI_COLON
+#  define SEMI_COLON 13
+# endif
+
+# ifndef ARROW_LEFT
+#  define ARROW_LEFT 14
+# endif
+
+# ifndef ARROW_RIGHT
+#  define ARROW_RIGHT 15
+# endif
+
+# ifndef PIPE_CHAR
+#  define PIPE_CHAR 15
+# endif
+
 # ifndef IGNORE_ERROR
 #  define IGNORE_ERROR -42
 # endif
