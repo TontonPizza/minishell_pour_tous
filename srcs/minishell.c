@@ -78,8 +78,6 @@ int	main(int argc, char **argv, char **envp)
 
 	init_all();
 	get_argv(set, argc, argv);
-
-
 	import_all_env(envp);
 	init_doge();
 	write_prompt();

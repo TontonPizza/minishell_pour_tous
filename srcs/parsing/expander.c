@@ -27,6 +27,7 @@
  *		$# = 0
  *
  */
+
 char 	*get_argv(int op, int index, char **argv)
 {
 	static char		**argv_2;
@@ -39,7 +40,7 @@ char 	*get_argv(int op, int index, char **argv)
 		return (0);
 	}
 	if (op == hashtag)
-		return ft_itoa(argc_2 - 1);
+		return (ft_itoa(argc_2 - 1));
 	if (index < argc_2)
 		return (ft_strdup(argv_2[index]));
 	return (ft_strdup(""));
@@ -48,7 +49,7 @@ char 	*get_argv(int op, int index, char **argv)
 char 	*expand_env_variable(char *word, int *cursor)
 {
 	char	*result;
-	int 	first;
+	int		first;
 
 	result = 0;
 	first = 0;
