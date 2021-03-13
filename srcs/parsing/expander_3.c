@@ -48,23 +48,6 @@ char 	*copy_to_double(char *word, int *index)
 	return (result);
 }
 
-char 	*join_char_code(char *str, char c)
-{
-	char	k;
-
-	k = c;
-	if (c == ';')
-		k = SEMI_COLON;
-	if (c == '<')
-		k = ARROW_LEFT;
-	if (c == '>')
-		k = ARROW_LEFT;
-	if (c == '|')
-		k = PIPE_CHAR;
-	return (join_char_and_free(str, k));
-
-}
-
 char 	*expand_backslash_and_parameters(char *word)
 {
 	char	*result;

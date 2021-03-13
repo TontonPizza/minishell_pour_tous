@@ -18,11 +18,13 @@
   <component name="ChangeListManager">
     <list default="true" id="f7591a6f-2ef6-4b92-898e-b984b4d90297" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/headers/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/minishell.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parsing/expander.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parsing/expander.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/parsing/lexer_3.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parsing/expander_3.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/builtins/builtin_exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/builtins/builtin_exit.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/bullshit_functions/bullshit_functions_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/bullshit_functions/bullshit_functions_2.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parsing/expander_3.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parsing/expander_3.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parsing/lexer.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parsing/lexer.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parsing/lexer_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parsing/lexer_2.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +50,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/srcs/error_buffer/error_buffer.c" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1nskDSXQHoYhLRt5dEoFo41T25Y" />
   <component name="ProjectLevelVcsManager">
@@ -138,7 +137,9 @@
       <workItem from="1615469864419" duration="12830000" />
       <workItem from="1615494352948" duration="331000" />
       <workItem from="1615546255195" duration="356000" />
-      <workItem from="1615549007913" duration="2194000" />
+      <workItem from="1615549007913" duration="4320000" />
+      <workItem from="1615595486613" duration="4585000" />
+      <workItem from="1615603314047" duration="1970000" />
     </task>
     <servers />
   </component>

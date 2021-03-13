@@ -17,15 +17,15 @@ int	token_type(char *word)
 	int	i;
 
 	i = ft_strlen(word);
-	if (ft_strncmp(word, "|", i) == 0)
+	if (ft_strncmp(word, "\x13", i) == 0)
 		return (TYPE_PIPE);
-	if (ft_strncmp(word, ";", i) == 0)
+	if (ft_strncmp(word, "\x14", i) == 0)
 		return (TYPE_END);
-	if (ft_strncmp(word, "<", i) == 0)
+	if (ft_strncmp(word, "\x11", i) == 0)
 		return (TYPE_IN);
-	if (ft_strncmp(word, ">", i) == 0)
+	if (ft_strncmp(word, "\x12", i) == 0)
 		return (TYPE_OUT);
-	if (ft_strncmp(word, ">>", i) == 0)
+	if (ft_strncmp(word, "\x12\x12", i) == 0)
 		return (TYPE_APPEND);
 	return (TYPE_WORD);
 }

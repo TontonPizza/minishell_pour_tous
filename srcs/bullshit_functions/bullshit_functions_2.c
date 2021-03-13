@@ -40,9 +40,9 @@ void 	free_if_not_null(void *ptr)
 
 int	define_redirect(int red, char c)
 {
-	if (c == '>')
+	if (c == ARROW_RIGHT)
 		return (1);
-	if (c == '|')
+	if (c == PIPE_C)
 		return (0);
 	return (red);
 }
@@ -60,9 +60,9 @@ char	**fix_words(char **words)
 	while (words[i])
 	{
 		redirect = define_redirect(redirect, words[i][0]);
-		if (words[i][0] == ';' && redirect == 1)
+		if (words[i][0] == '\x14' && redirect == 1)
 		{
-			result = split_join_string(result, "|");
+			result = split_join_string(result, "\x13");
 			result = split_join_string(result, "ignore");
 			redirect = 0;
 		}
@@ -70,7 +70,7 @@ char	**fix_words(char **words)
 	}
 	if (free_split(words) && redirect == 1)
 	{
-		result = split_join_string(result, "|");
+		result = split_join_string(result, "\x13");
 		result = split_join_string(result, "ignore");
 	}
 	return (result);

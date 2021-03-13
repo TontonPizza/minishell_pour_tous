@@ -21,6 +21,15 @@ int 	exit_code(int op, int val)
 	return (code);
 }
 
+int 	put_in_range(int i)
+{
+	while (i < 0)
+		i += 256;
+	while (i > 256)
+		i -= 256;
+	return (i);
+}
+
 int 	builtin_exit(char **cmd)
 {
 	if (last_pipe(get, 0) == FALSE)
@@ -31,12 +40,12 @@ int 	builtin_exit(char **cmd)
 	if (cmd[1] != 0)
 	{
 		if (ft_atoi(cmd[1]) < 0 || ft_atoi(cmd[1]) > 255)
-			exit_code(set, 255);
+			exit_code(set, put_in_range(ft_atoi(cmd[1])));
 		else
 			exit_code(set, ft_atoi(cmd[1]));
 	}
 	else
-		exit_code(set, 0);
+		exit_code(set, last_return_code(get, 0));
 	if (cmd[0] && cmd[1] && cmd[2])
 		exit_code(set, 214);
 	free_split(cmd);
