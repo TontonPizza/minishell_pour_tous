@@ -53,13 +53,7 @@ void 	sig_message()
 	{
 		ft_putstr_fd("exit : too many arguments\n", g_new_stdout);
 		get_quit_flag(set, 0);
-		last_return_code(set, 1);
-	}
-	if (get_quit_flag(get, 0) == 3)
-	{
-		ft_putstr_fd("exit : non numerical value\n", g_new_stdout);
-		get_quit_flag(set, 0);
-		last_return_code(set, 1);
+		last_return_code(set, 2);
 	}
 }
 
@@ -116,6 +110,8 @@ int	main(int argc, char **argv, char **envp)
 	if (exit_code(get, 0) < 0)
 		free(line);
 	write(g_new_stdout, "exit", 5);
+	if (get_quit_flag(get, 3))
+		ft_putstr_fd(" : non numerical argument\n", g_new_stdout);
 	destroy_env();
 	clear_error_buffer();
 	return (exit_code(get, 0));

@@ -43,7 +43,7 @@ int	search_binary_or_builtin_and_exec(char **cmd)
 	if (vo_strcmp(cmd[0], "env") == 0)
 		return (builtin_env(cmd));
 	if (vo_strcmp(cmd[0], "exit") == 0)
-		return (builtin_exit(cmd));
+		return (builtin_exit(cmd, split_size(cmd)));
 	if (vo_strcmp(cmd[0], "doge") == 0)
 		return (builtin_doge(cmd));
 	exec_pipe(cmd);

@@ -44,23 +44,24 @@ int 	is_full_digit(char *word)
 	return (1);
 }
 
-int 	builtin_exit(char **cmd)
+int 	builtin_exit(char **cmd, int size)
 {
-	if (cmd[1] && is_full_digit(cmd[1]) == 0)
-	{
-		free_split(cmd);
-		get_quit_flag(set, 3);
-		return (0);
-	}
-	if (split_size(cmd) > 2)
+	if (size > 2)
 	{
 		free_split(cmd);
 		get_quit_flag(set, 2);
-		return (0);
 	}
-	if (last_pipe(get, 0) == FALSE && (free_split(cmd) * 0 + 1))
-		return (0);
-	if (cmd[1] != 0)
+	else if (cmd[1] && is_full_digit(cmd[1]) == 0)
+	{
+		free_split(cmd);
+		get_quit_flag(set, 3);
+		exit_code(set, 2);
+	}
+	else if (last_pipe(get, 0) == FALSE)
+	{
+		free_split(cmd);
+	}
+	else if (cmd[1] != 0)
 	{
 		if (ft_atoi(cmd[1]) < 0 || ft_atoi(cmd[1]) > 255)
 			exit_code(set, put_in_range(ft_atoi(cmd[1])));
