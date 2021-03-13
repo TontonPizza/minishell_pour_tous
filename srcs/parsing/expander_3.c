@@ -17,11 +17,14 @@ char 	*copy_to_simple(char *word, int *index)
 	char	*result;
 	int		i;
 
-	result = ft_strdup(word);
+	result = 0;
 	i = 0;
-	while (result[i] && result[i] != '\'')
-		i++;
-	result[i] = 0;
+	while (word[i])
+	{
+		if (word[i] == '\'' && ++i)
+			break ;
+		result = join_char_and_free(result, word[i++]);
+	}
 	(*index) += i;
 	return (result);
 }
@@ -35,6 +38,8 @@ char 	*copy_to_double(char *word, int *index)
 	i = 0;
 	while (word[i])
 	{
+		if (word[i] == '\\' && is_char_in_set(word[i + 1], "\\\"$") == 0)
+			result = join_char_and_free(result, word[i++]);
 		if (word[i] == '\\' && ++i && is_char_in_set(word[i], "\\\"$"))
 			result = join_char_and_free(result, word[i++]);
 		if (word[i] == '"' && ++i)
