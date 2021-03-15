@@ -33,7 +33,7 @@ void 	display_error(void)
 	}
 	else
 		set_error_num_according_to_msg(error_msg);
-	ft_putendl_fd(error_msg, g_new_stdout);
+	ft_putstr_fd(error_msg, g_new_stdout);
 	free(error_msg);
 	clear_error_buffer();
 }

@@ -12,6 +12,7 @@
 
 #include "../../headers/minishell.h"
 
+
 int	destroy_env_list(t_env_var **item)
 {
 	if (*item == NULL)
@@ -32,10 +33,11 @@ t_env_data	*get_meta_data(int first_call)
 		free_split(metadata.all_env_as_array);
 		free(metadata.requested_env_var);
 		destroy_env_list(&(metadata.env_list));
+		return (0);
 	}
 	if (first_call == 1)
 	{
-		metadata.env_list = x_malloc(sizeof(t_env_var*));
+		metadata.env_list = x_malloc(sizeof(t_env_var));
 		metadata.env_list->name = ft_strdup("author");
 		metadata.env_list->value = ft_strdup("vo-nguye");
 		metadata.env_list->next = 0;

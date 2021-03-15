@@ -132,6 +132,7 @@ typedef struct s_env_data
 //int		g_new_stderr;
 //int		g_new_stdin;
 int			g_new_stdout;
+int 		g_exit_code;
 
 int			g_out(int op, int val);
 int			g_in(int op, int val);
@@ -206,6 +207,7 @@ int			search_binary_or_builtin_and_exec(char **cmd);
 int			exec_pipe(char **cmd);
 int			builtin_env(char **cmd);
 int			builtin_export(char **cmd);
+int			export_word(char *word);
 int			builtin_unset(char **cmd);
 int			builtin_echo(char **cmd);
 int			builtin_cd(char **cmd);

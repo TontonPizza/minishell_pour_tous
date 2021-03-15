@@ -80,13 +80,13 @@ void	write_prompt(void)
 void 	init_all(void)
 {
 	initialize_path_to_buffer();
+	exit_code(set, -1);
 	init_env_list();
 	get_quit_flag(set, 0);
 	signal(SIGINT, sighandler_int);
 	signal(SIGQUIT, sighandler_quit);
 	g_in(set, dup(0));
 	get_pid(set, -1);
-	exit_code(set, -1);
 }
 
 int	main(int argc, char **argv, char **envp)

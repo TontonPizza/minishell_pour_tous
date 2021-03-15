@@ -18,9 +18,13 @@
   <component name="ChangeListManager">
     <list default="true" id="f7591a6f-2ef6-4b92-898e-b984b4d90297" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libft/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/libft/get_next_line.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/minishell.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/sighandlers/sighandlers.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/sighandlers/sighandlers.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/buffers/error.txt" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/buffers/error.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/builtins/builtin_exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/builtins/builtin_exit.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/environnement/env_manipulation_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/environnement/env_manipulation_2.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/error_buffer/error_buffer_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/error_buffer/error_buffer_2.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/minishell.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/minishell.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +64,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../push_swap" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
@@ -140,6 +144,8 @@
       <workItem from="1615647838856" duration="13621000" />
       <workItem from="1615703915730" duration="704000" />
       <workItem from="1615704971496" duration="279000" />
+      <workItem from="1615711984077" duration="3312000" />
+      <workItem from="1615818316757" duration="3506000" />
     </task>
     <servers />
   </component>

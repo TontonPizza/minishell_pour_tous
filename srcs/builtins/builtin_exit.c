@@ -46,22 +46,18 @@ int 	is_full_digit(char *word)
 
 int 	builtin_exit(char **cmd, int size)
 {
-	if (size > 2)
+	if (last_pipe(get, 0) == FALSE)
+		return (free_split(cmd));
+	else if (size > 2)
 	{
-		free_split(cmd);
 		get_quit_flag(set, 2);
 	}
-	else if (cmd[1] && is_full_digit(cmd[1]) == 0)
+	else if (size > 1 && is_full_digit(cmd[1]) == 0)
 	{
-		free_split(cmd);
 		get_quit_flag(set, 3);
 		exit_code(set, 2);
 	}
-	else if (last_pipe(get, 0) == FALSE)
-	{
-		return (free_split(cmd));
-	}
-	else if (cmd[1] != 0)
+	else if (size > 1)
 	{
 		if (ft_atoi(cmd[1]) < 0 || ft_atoi(cmd[1]) > 255)
 			exit_code(set, put_in_range(ft_atoi(cmd[1])));
