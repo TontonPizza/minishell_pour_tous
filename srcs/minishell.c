@@ -82,7 +82,6 @@ int	main(int argc, char **argv, char **envp)
 	init_all();
 	get_argv(set, argc, argv);
 	import_all_env(envp);
-	init_doge();
 	write_prompt();
 	line = 0;
 	while (get_next_line(g_in(get, 0), &line) > 0 && exit_code(get, 0) < 0)

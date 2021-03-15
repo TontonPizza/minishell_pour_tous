@@ -26,7 +26,6 @@ SRCS	=	./srcs/minishell.c \
 			./srcs/builtins/builtin_echo.c \
 			./srcs/builtins/builtin_cd.c \
 			./srcs/builtins/builtin_exit.c \
-			./srcs/builtins/builtin_doge.c \
 			./srcs/bullshit_functions/bullshit_functions.c \
 			./srcs/bullshit_functions/bullshit_functions_2.c \
 			./srcs/sighandlers/sighandlers.c \
