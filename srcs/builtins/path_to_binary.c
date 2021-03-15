@@ -19,7 +19,7 @@ char	*path_to_binary(char *word)
 	struct stat		stat_p;
 	int				i;
 
-	path = get_value_and_free_or_not("PATH", 0);
+	path = get_value_and_free_or_not(ft_strdup("PATH"), FREE_ARG);
 	split_path = ft_split(path, ':');
 	free(path);
 	path = NULL;
