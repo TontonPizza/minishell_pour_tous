@@ -35,6 +35,8 @@ int 	is_full_digit(char *word)
 	int		i;
 
 	i = 0;
+	if (word[i] == '+' || word[i] == '-')
+		i++;
 	while (word[i])
 	{
 		if (ft_isdigit(word[i]) == 0)
