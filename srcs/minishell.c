@@ -59,34 +59,20 @@ void 	sig_message(void)
 
 void	write_prompt(void)
 {
-	char	*path;
-	char	*user;
-	char	**split;
-
 	sig_message();
-	user = get_value_and_free_or_not("USER", 0);
-	path = getcwd(NULL, 500);
-	split = ft_split(path, '/');
-	ft_putstr_fd(user, g_new_stdout);
-	ft_putchar_fd('~', g_new_stdout);
-	if (split && split_size(split) > 0)
-		ft_putstr_fd(split[split_size(split) - 1], g_new_stdout);
 	write(g_new_stdout, PROMPT, ft_strlen(PROMPT));
-	free(path);
-	free(user);
-	free_split(split);
 }
 
 void 	init_all(void)
 {
 	initialize_path_to_buffer();
-	exit_code(set, -1);
 	init_env_list();
 	get_quit_flag(set, 0);
 	signal(SIGINT, sighandler_int);
 	signal(SIGQUIT, sighandler_quit);
 	g_in(set, dup(0));
 	get_pid(set, -1);
+	exit_code(set, -1);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -107,7 +93,7 @@ int	main(int argc, char **argv, char **envp)
 			break ;
 		write_prompt();
 	}
-	free(line);
+//	free(line);
 	write(g_new_stdout, "exit", 5);
 	if (get_quit_flag(get, 3))
 		ft_putstr_fd(" : non numerical argument\n", g_new_stdout);
