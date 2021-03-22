@@ -1,4 +1,4 @@
-# minishell
+# minishell ![Final Grade](https://github.com/TontonPizza/minishell_pour_tous/blob/master/100.png)
 ### Aussi mignon qu'un vrai shell
 
 ### Projet 42
@@ -14,7 +14,7 @@
 
 - Utilisation des pipes pour la communication entre les processus
 
-![Final Grade](https://github.com/TontonPizza/minishell_pour_tous/blob/master/100.png)
+
 
 
 
