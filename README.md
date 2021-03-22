@@ -4,7 +4,7 @@
 ### Projet 42
 ### L'objectif de ce projet est de créer un simple shell.
 
-####Enjeux et intérêts pédagogiques :
+#### Enjeux et intérêts pédagogiques :
 1. Parsing en plusieurs étapes :
   - Analyse syntaxique
   - Expansion des paramètres et variable d'environnement
