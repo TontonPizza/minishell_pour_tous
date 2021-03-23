@@ -30,6 +30,8 @@ int 	builtin_cd(char **cmd)
 	pwd = getcwd(NULL, 500);
 	export_var_free("OLDPWD", getcwd(NULL, 500));
 	split = ft_split(cmd[1], '/');
+	if (cmd[1][0] == '/')
+		split[0] = char_join_and_free(split[0], '/');
 	while (i >= 0 && cmd[0] && cmd[1] && split[i])
 	{
 		if (chdir(split[i]) != 0)
@@ -39,9 +41,8 @@ int 	builtin_cd(char **cmd)
 		}
 		i++;
 	}
-	if (i < 0)
-		chdir(pwd);
-	free(pwd);
+	if (i < 0 && chdir(pwd)*0 + 1 == 1)
+		free(pwd);
 	export_var_free("PWD", getcwd(NULL, 500));
 	return (free_split(cmd) + free_split(split));
 }
